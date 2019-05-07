@@ -67,6 +67,13 @@ export default class SseToolbar3d extends SseToolbar {
                     </div>
                 </div>
                 <div className="vflex">
+                    <div className="tool-title">Undo Redo</div>
+                    <div className="hflex">
+                        {this.renderCommand("undoCommand")}
+                        {this.renderCommand("redoCommand")}
+                    </div>
+                </div>
+                <div className="vflex">
                     <div className="tool-title">View Interaction</div>
                     <div className="v group">
                         {this.renderCheckbox("autoFocusCommand", false)}
