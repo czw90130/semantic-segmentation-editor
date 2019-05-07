@@ -97,6 +97,31 @@ Replace <code>PORT</code>, <code>INPUT_FOLDER</code> and <code>OUTPUT_FOLDER</co
 }
 ```
 
+{
+      "name": "Bodyparts", "objects": [
+      {"label": "VOID", "color": "#CFCFCF"},
+      {"label": "FOOT_L", "color": "#B4A5B4", "icon": "SignCaution"},
+      {"label": "FOOT_R", "color": "#BE9999", "icon": "Gate"},
+      {"label": "CALF_L", "color": "#66669C", "icon": "Wall"},
+      {"label": "CALF_R", "color": "#464646", "icon": "HomeVariant"},
+      {"label": "THIGH_L", "color": "#00006E", "icon": "TruckTrailer"},
+      {"label": "THIGH_R", "color": "#00005A", "icon": "Caravan"},
+      {"label": "HIP", "color": "#770B20", "icon": "Bike"},
+      {"label": "WAIST", "color": "#0000E6", "icon": "Motorbike"},
+      {"label": "HAND_L", "color": "#E6968C", "icon": "Train"},
+      {"label": "HAND_R", "color": "#003C64", "icon": "Bus"},
+      {"label": "FOREARM_L", "color": "#000046", "icon": "Truck"},
+      {"label": "FOREARM_R", "color": "#0000E8", "icon": "Car"},
+      {"label": "UPPERARM_L", "color": "#FF0000", "icon": "Motorbike"},
+      {"label": "UPPERARM_R", "color": "#DC143C", "icon": "Walk"},
+      {"label": "CHEST_L", "color": "#E6968C", "icon": "Train"},
+      {"label": "CHEST_R", "color": "#FAAAA0", "icon": "Parking"},
+      {"label": "BACK_HEAD", "color": "#966464", "icon": "Bridge"},
+      {"label": "NECK", "color": "#B3B3B3", "icon": "NaturePeople"},
+      {"label": "FACE", "color": "#743AA4", "icon": "Face"}
+    ]
+    }
+
 ## How to use
 
 The editor is built around 3 different screens:
