@@ -138,7 +138,7 @@ export default class SsePLYLoader {
                             }
                         }
                         
-                        const classIndex = firstlable || 0;
+                        const classIndex = firstlable;
                         item.classIndex = classIndex;
                         label.push(classIndex);
 
