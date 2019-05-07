@@ -229,7 +229,7 @@ function generatePLYOutput(req, res, next)
                             out += obj.x + " " + obj.y + " " + obj.z + " ";
                             if(labels[position] > 0)
                             {
-                                out += (1 << (labels[position]-1)) + " ";
+                                out += (1 << (labels[position])) + " ";
                             }
                             else
                             {

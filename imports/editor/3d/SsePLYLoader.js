@@ -128,7 +128,7 @@ export default class SsePLYLoader {
                             {
                                 if (1 == temp & 1)
                                 {
-                                    firstlable = t+1;
+                                    firstlable = t;
                                     break
                                 }
                                 else
