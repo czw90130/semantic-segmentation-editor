@@ -29,7 +29,18 @@ export default class SsePLYLoader {
                     PLYheader.headerLen = result2[0].length + result1;
                     PLYheader.str = data.substr(0, PLYheader.headerLen);
 
+                    // parse
+                    PCDheader.points = /element vertex (.*)/i.exec(PCDheader.str);
 
+                    // evaluate
+                    if (PCDheader.points !== null)
+                    {
+                        PCDheader.points = parseInt(PCDheader.points[1], 10);
+                    }
+                    else
+                    {
+                        PCDheader.points = -1
+                    }
                     PLYheader.viewpoint = {
                         tx: 0, ty: 0, tz: 0,
                         qw: 1, qx: 0, qy: 0, qz: 0
@@ -78,9 +89,15 @@ export default class SsePLYLoader {
                     var plyData = textData.substr(PLYheader.headerLen);
                     var lines = plyData.split('\n');
                     let pt, npt, item;
-                    for (var i = 0, l = lines.length - 1; i < l; i++) 
+                    console.log(lines.length)
+                    var vcnt = PCDheader.points
+                    if (vcnt < 0)
                     {
-                        console.log(lines[i])
+                        vcnt = lines.length
+                    }
+                    for (var i = 0, l = vcnt; i < l; i++) 
+                    {
+                        
                         var line = lines[i].split(' ');
                         item = {};
                         payload.push(item);
@@ -100,9 +117,9 @@ export default class SsePLYLoader {
                         item.z = pt.z;
                         position.push(pt.z);
 
-                        // position.push(pt.nx);
-                        // position.push(pt.ny);
-                        // position.push(pt.nz);
+                        // position.push(npt.x);
+                        // position.push(npt.y);
+                        // position.push(npt.z);
 
                         var firstlable = 0;
                         if(offset.label>0)
