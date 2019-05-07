@@ -30,16 +30,16 @@ export default class SsePLYLoader {
                     PLYheader.str = data.substr(0, PLYheader.headerLen);
 
                     // parse
-                    PCDheader.points = /element vertex (.*)/i.exec(PCDheader.str);
+                    PLYheader.points = /element vertex (.*)/i.exec(PLYheader.str);
 
                     // evaluate
-                    if (PCDheader.points !== null)
+                    if (PLYheader.points !== null)
                     {
-                        PCDheader.points = parseInt(PCDheader.points[1], 10);
+                        PLYheader.points = parseInt(PLYheader.points[1], 10);
                     }
                     else
                     {
-                        PCDheader.points = -1
+                        PLYheader.points = -1
                     }
                     PLYheader.viewpoint = {
                         tx: 0, ty: 0, tz: 0,
