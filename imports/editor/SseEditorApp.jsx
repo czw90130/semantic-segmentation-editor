@@ -23,6 +23,7 @@ export default withTracker((props) => {
     let subName = "sse-data-descriptor";
     const subscription = Meteor.subscribe(subName, imageUrl);
     const subReady = subscription.ready();
-    const mode = props.match.params.path.endsWith(".pcd") ? "3d" : "2d";
+    // const mode = props.match.params.path.endsWith(".pcd") ? "3d" : "2d";
+    const mode = props.match.params.path.endsWith(".ply") ? "3d" : "2d";
     return {imageUrl, subReady, mode};
 })(SseEditorApp);

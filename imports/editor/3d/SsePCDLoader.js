@@ -56,8 +56,10 @@ export default class SsePCDLoader {
                         PCDheader.points = parseInt(PCDheader.points[1], 10);
                     if (PCDheader.points === null)
                         PCDheader.points = PCDheader.width * PCDheader.height;
-                    if (PCDheader.size !== null) {
-                        PCDheader.size = PCDheader.size[1].split(' ').map(function (x) {
+                    if (PCDheader.size !== null) 
+                    {
+                        PCDheader.size = PCDheader.size[1].split(' ').map(function (x) 
+                        {
                             return parseInt(x, 10);
                         });
                     }
@@ -71,9 +73,12 @@ export default class SsePCDLoader {
                         PCDheader.count = PCDheader.count[1].split(' ').map(function (x) {
                             return parseInt(x, 10);
                         });
-                    } else {
+                    } 
+                    else 
+                    {
                         PCDheader.count = [];
-                        for (let i = 0, l = PCDheader.fields.length; i < l; i++) {
+                        for (let i = 0, l = PCDheader.fields.length; i < l; i++) 
+                        {
                             PCDheader.count.push(1);
                         }
                     }
@@ -82,13 +87,16 @@ export default class SsePCDLoader {
 
                     var sizeSum = 0;
 
-                    for (let i = 0, l = PCDheader.fields.length; i < l; i++) {
+                    for (let i = 0, l = PCDheader.fields.length; i < l; i++) 
+                    {
 
                         if (PCDheader.data === 'ascii') {
 
                             PCDheader.offset[PCDheader.fields[i]] = i;
 
-                        } else {
+                        } 
+                        else 
+                        {
 
                             PCDheader.offset[PCDheader.fields[i]] = sizeSum;
                             sizeSum += PCDheader.size[i];

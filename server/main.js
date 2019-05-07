@@ -75,7 +75,8 @@ Meteor.methods({
                     extname(source).toLowerCase() == ".bmp" ||
                     extname(source).toLowerCase() == ".jpeg" ||
                     extname(source).toLowerCase() == ".jpg" ||
-                    extname(source).toLowerCase() == ".pcd" ||
+                    // extname(source).toLowerCase() == ".pcd" ||
+                    extname(source).toLowerCase() == ".ply" ||
                     extname(source).toLowerCase() == ".png"
                 )
         };

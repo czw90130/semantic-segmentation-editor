@@ -38,8 +38,10 @@ export default class SseToolbar3d extends SseToolbar {
 
         this.addCommand("undoCommand", "Undo", false, "Ctrl+Z", "undo", Undo, "disabled");
         this.addCommand("redoCommand", "Redo", false, "Ctrl+Y", "redo", Redo, "disabled");
-        this.addCommand("downloadTextCommand", "PCD Output as Text", false, "", "downloadText", FileDownloadOutline);
-        this.addCommand("downloadFileCommand", "PCD Output as File", false, "", "downloadFile", FileDownloadOutline);
+        // this.addCommand("downloadTextCommand", "PCD Output as Text", false, "", "downloadText", FileDownloadOutline);
+        // this.addCommand("downloadFileCommand", "PCD Output as File", false, "", "downloadFile", FileDownloadOutline);
+        this.addCommand("downloadTextCommand", "PLY Output as Text", false, "", "downloadText", FileDownloadOutline);
+        this.addCommand("downloadFileCommand", "PLY Output as File", false, "", "downloadFile", FileDownloadOutline);
         this.sendMsg("selector");
         this.sendMsg("selection-mode-add");
     }
@@ -79,7 +81,8 @@ export default class SseToolbar3d extends SseToolbar {
                     </div>
                 </div>
                 <div className="vflex">
-                    <div className="tool-title">PCD Output</div>
+                    {/* <div className="tool-title">PCD Output</div> */}
+                    <div className="tool-title">PLY Output</div>
                     <div className="hflex">
                         {this.renderCommand("downloadTextCommand")}
                         {this.renderCommand("downloadFileCommand")}

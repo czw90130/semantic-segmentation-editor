@@ -55,7 +55,7 @@ const init = ()=> {
         if (!existsSync(configurationFile.imagesFolder)){
             mkdirSync(configurationFile.imagesFolder);
             download("https://raw.githubusercontent.com/Hitachi-Automotive-And-Industry-Lab/semantic-segmentation-editor/master/private/samples/bitmap_labeling.png", configurationFile.imagesFolder);
-            download("https://raw.githubusercontent.com/Hitachi-Automotive-And-Industry-Lab/semantic-segmentation-editor/master/private/samples/pointcloud_labeling.pcd", configurationFile.imagesFolder);
+            // download("https://raw.githubusercontent.com/Hitachi-Automotive-And-Industry-Lab/semantic-segmentation-editor/master/private/samples/pointcloud_labeling.pcd", configurationFile.imagesFolder);
         }
 
         if (config.configuration && config.configuration["internal-folder"] != "") {
@@ -72,8 +72,10 @@ const init = ()=> {
         }
         configurationFile.setsOfClasses.forEach(o => configurationFile.setsOfClassesMap.set(o.name, o));
         console.log("Semantic Segmentation Editor");
-        console.log("Images (JPG, PNG, PCD) served from", configurationFile.imagesFolder);
-        console.log("PCD binary segmentation data stored in", configurationFile.pointcloudsFolder);
+        // console.log("Images (JPG, PNG, PCD) served from", configurationFile.imagesFolder);
+        // console.log("PCD binary segmentation data stored in", configurationFile.pointcloudsFolder);
+        console.log("Images (JPG, PNG, PLY) served from", configurationFile.imagesFolder);
+        console.log("PLY binary segmentation data stored in", configurationFile.pointcloudsFolder);
         console.log("Number of available sets of object classes:", configurationFile.setsOfClasses.length);
         return configurationFile;
     }catch(e){

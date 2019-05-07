@@ -4,7 +4,8 @@ import React from 'react';
 import * as THREE from 'three';
 import {BoxHelper} from './GradientBoxHelper';
 import SseGlobals from "../../common/SseGlobals";
-import SsePCDLoader from "./SsePCDLoader";
+// import SsePCDLoader from "./SsePCDLoader";
+import SsePLYLoader from "./SsePLYLoader";
 import OrbitControls from "./tools/OrbitControls"
 import Sse3dLassoSelector from "./tools/Sse3dLassoSelector";
 import PointInPoly from "point-in-polygon-extended";
@@ -30,7 +31,8 @@ export default class SseEditor3d extends React.Component {
     constructor() {
         super();
         SseMsg.register(this);
-        new SsePCDLoader(THREE);
+        // new SsePCDLoader(THREE);
+        new SsePLYLoader(THREE);
         new OrbitControls(THREE);
 
         this.autoFilterMode = false;
@@ -525,15 +527,18 @@ export default class SseEditor3d extends React.Component {
     }
 
     downloadFile() {
-        window.open("/api/pcdfile" + this.props.imageUrl, "_blank");
+        // window.open("/api/pcdfile" + this.props.imageUrl, "_blank");
+        window.open("/api/plyfile" + this.props.imageUrl, "_blank");
     }
 
     downloadText() {
-        window.open("/api/pcdtext" + this.props.imageUrl, "_blank");
+        // window.open("/api/pcdtext" + this.props.imageUrl, "_blank");
+        window.open("/api/plytext" + this.props.imageUrl, "_blank");
     }
 
     init() {
-        this.sendMsg("bottom-right-label", {message: "Downloading PCD File..."});
+        this.sendMsg("bottom-right-label", {message: "Downloading PLY File..."});
+        // this.sendMsg("bottom-right-label", {message: "Downloading PCD File..."});
         /*
         THREE.Vector3.prototype.toString = function () {
             const s = (n) => Math.round(n * 100) / 100;
@@ -1951,8 +1956,21 @@ export default class SseEditor3d extends React.Component {
         this.cameraPreset("front", true);
     }
 
-    loadPCDFile(fileUrl) {
-        const loader = new THREE.PCDLoader();
+    // loadPCDFile(fileUrl) {
+    //     const loader = new THREE.PCDLoader();
+    //     return new Promise((res) => {
+    //         loader.load(fileUrl, (arg) => {
+    //             $("#waiting").addClass("display-none");
+    //             this.display(arg.object, arg.position, arg.label);
+    //             Object.assign(this.meta, {header: arg.header});
+    //             res();
+    //         });
+    //     });
+
+    // }
+
+    loadPLYFile(fileUrl) {
+        const loader = new THREE.PLYLoader();
         return new Promise((res) => {
             loader.load(fileUrl, (arg) => {
                 $("#waiting").addClass("display-none");
@@ -1995,7 +2013,8 @@ export default class SseEditor3d extends React.Component {
         this.sendMsg("currentSample", {data: this.meta});
         const fileUrl = SseGlobals.getFileUrl(this.props.imageUrl);
 
-        this.loadPCDFile(fileUrl).then(() => {
+        // this.loadPCDFile(fileUrl).then(() => {
+        this.loadPLYFile(fileUrl).then(() => {
             this.rotateGeometry(this.meta.rotationX, this.meta.rotationY, this.meta.rotationZ);
             this.dataManager.loadBinaryFile(this.props.imageUrl + ".labels")
                 .then(result => {
