@@ -77,7 +77,7 @@ export default class SsePLYLoader {
 
                     var plyData = textData.substr(PLYheader.headerLen);
                     var lines = plyData.split('\n');
-                    let pt, item;
+                    let pt, npt, item;
                     for (var i = 0, l = lines.length - 1; i < l; i++) 
                     {
 
