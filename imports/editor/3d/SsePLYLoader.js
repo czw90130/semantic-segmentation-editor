@@ -124,7 +124,7 @@ export default class SsePLYLoader {
                         if(offset.label>0)
                         {
                             firstlable = parseInt(line[offset.label]);
-                            for(var t=0, temp=firstlable ; t<128; t++)
+                            for(var t=0, temp=firstlable ; t<64; t++)
                             {
                                 if (1 == temp & 1)
                                 {

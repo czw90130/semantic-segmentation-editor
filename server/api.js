@@ -227,7 +227,7 @@ function generatePLYOutput(req, res, next)
                         case 2:
                             obj.z = v;
                             out += obj.x + " " + obj.y + " " + obj.z + " ";
-                            if(labels[position] > 0)
+                            if(labels[position] >= 0 && labels[position] <= 1 << 64)
                             {
                                 out += (1 << (labels[position])) + " ";
                             }
