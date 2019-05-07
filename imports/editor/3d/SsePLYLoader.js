@@ -95,6 +95,7 @@ export default class SsePLYLoader {
                     {
                         vcnt = lines.length
                     }
+                    console.log(vcnt)
                     for (var i = 0, l = vcnt; i < l; i++) 
                     {
                         
