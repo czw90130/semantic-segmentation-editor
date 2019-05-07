@@ -90,7 +90,7 @@ export default class SsePLYLoader {
                     var lines = plyData.split('\n');
                     let pt, npt, item;
                     console.log(lines.length)
-                    var vcnt = PCDheader.points
+                    var vcnt = PLYheader.points
                     if (vcnt < 0)
                     {
                         vcnt = lines.length
