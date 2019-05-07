@@ -227,7 +227,15 @@ function generatePLYOutput(req, res, next)
                         case 2:
                             obj.z = v;
                             out += obj.x + " " + obj.y + " " + obj.z + " ";
-                            out += (1 << labels[position]) + " ";
+                            if(labels[position] > 0)
+                            {
+                                out += (1 << (labels[position]-1)) + " ";
+                            }
+                            else
+                            {
+                                out += "-1 "
+                            }
+                            
                             // // no object for now!
                             // const assignedObject = objectByPointIndex.get(position);
                             // if (assignedObject != undefined)

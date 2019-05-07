@@ -80,7 +80,7 @@ export default class SsePLYLoader {
                     let pt, npt, item;
                     for (var i = 0, l = lines.length - 1; i < l; i++) 
                     {
-
+                        console.log(lines[i])
                         var line = lines[i].split(' ');
                         item = {};
                         payload.push(item);
@@ -112,7 +112,7 @@ export default class SsePLYLoader {
                             {
                                 if (1 == temp & 1)
                                 {
-                                    firstlable = i;
+                                    firstlable = i+1;
                                     break
                                 }
                                 else
