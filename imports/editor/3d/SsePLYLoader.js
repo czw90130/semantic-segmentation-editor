@@ -96,7 +96,7 @@ export default class SsePLYLoader {
                         vcnt = lines.length
                     }
                     console.log(vcnt)
-                    for (var i = 0, l = vcnt; i < l; i++) 
+                    for (var i = 0; i < vcnt; i++) 
                     {
                         
                         var line = lines[i].split(' ');
@@ -126,11 +126,11 @@ export default class SsePLYLoader {
                         if(offset.label>0)
                         {
                             firstlable = parseInt(line[offset.label]);
-                            for(var i=0, temp=firstlable ; i<64; i++)
+                            for(var t=0, temp=firstlable ; t<64; t++)
                             {
                                 if (1 == temp & 1)
                                 {
-                                    firstlable = i+1;
+                                    firstlable = t+1;
                                     break
                                 }
                                 else
@@ -150,6 +150,7 @@ export default class SsePLYLoader {
                         color.push(0);
 
                     }
+                    console.log("Lines Ok\n")
                 }
 
                 // build geometry
