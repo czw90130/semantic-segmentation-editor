@@ -169,7 +169,7 @@ function generatePLYOutput(req, res, next)
 
         let out = "ply\n";
         out += "format ascii 1.0\n";
-        out += "element vertex" + plyContent.position.length/3 + "\n";
+        out += "element vertex " + plyContent.position.length/3 + "\n";
         out += "property double x\n";
         out += "property double y\n";
         out += "property double Z\n";

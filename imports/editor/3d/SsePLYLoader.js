@@ -43,7 +43,7 @@ export default class SsePLYLoader {
                     }
                     PLYheader.viewpoint = {
                         tx: 0, ty: 0, tz: 0,
-                        qw: 1, qx: 0, qy: 0, qz: 0
+                        qw: 0, qx: 0, qy: 1, qz: 0
                     };
 
                 
@@ -89,13 +89,11 @@ export default class SsePLYLoader {
                     var plyData = textData.substr(PLYheader.headerLen);
                     var lines = plyData.split('\n');
                     let pt, npt, item;
-                    console.log(lines.length)
                     var vcnt = PLYheader.points
                     if (vcnt < 0)
                     {
                         vcnt = lines.length
                     }
-                    console.log(vcnt)
                     for (var i = 0; i < vcnt; i++) 
                     {
                         
@@ -150,7 +148,6 @@ export default class SsePLYLoader {
                         color.push(0);
 
                     }
-                    console.log("Lines Ok\n")
                 }
 
                 // build geometry
