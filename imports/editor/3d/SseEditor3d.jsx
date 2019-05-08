@@ -2022,10 +2022,14 @@ export default class SseEditor3d extends React.Component {
         // this.loadPCDFile(fileUrl).then(() => {
         this.loadPLYFile(fileUrl).then(() => 
         {
-            console.log(this.meta.rotationX)
-            console.log(this.meta.rotationY)
-            console.log(this.meta.rotationZ)
-            this.rotateGeometry(this.meta.rotationX, this.meta.rotationY, this.meta.rotationZ);
+            if (typeof(this.meta.rotationX) == "undefined")
+            {
+                this.rotateGeometry(0, PI, PI);
+            }
+            else
+            {
+                this.rotateGeometry(this.meta.rotationX, this.meta.rotationY, this.meta.rotationZ);
+            }
             this.dataManager.loadBinaryFile(this.props.imageUrl + ".labels")
                 .then(result => 
                 {
