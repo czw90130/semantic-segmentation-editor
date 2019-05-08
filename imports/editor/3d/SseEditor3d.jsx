@@ -1264,7 +1264,8 @@ export default class SseEditor3d extends React.Component {
         }
     }
 
-    rotateGeometry(rx, ry, rz) {
+    rotateGeometry(rx, ry, rz) 
+    {
         this.meta.rotationX = rx || 0;
         this.meta.rotationY = ry || 0;
         this.meta.rotationZ = rz || 0;
@@ -1273,7 +1274,8 @@ export default class SseEditor3d extends React.Component {
         this.saveMeta();
     }
 
-    resetRotation() {
+    resetRotation() 
+    {
         const {rotationX, rotationY, rotationZ} = this.meta;
         this.cloudGeometry.rotateZ(-rotationZ || 0).rotateY(-rotationY || 0).rotateX(-rotationX || 0);
         this.meta.rotationX = this.meta.rotationY = this.meta.rotationZ = 0;
@@ -1281,7 +1283,8 @@ export default class SseEditor3d extends React.Component {
         this.invalidatePosition();
     }
 
-    endPointcloudOrientation(upDirection, frontDirection) {
+    endPointcloudOrientation(upDirection, frontDirection) 
+    {
         const config = upDirection + "," + frontDirection;
 
         let rx = 0, ry = 0, rz = 0;
@@ -2000,13 +2003,16 @@ export default class SseEditor3d extends React.Component {
         Meteor.call("saveData", this.meta);
     }
 
-    start() {
+    start() 
+    {
         const serverMeta = SseSamples.findOne({url: this.props.imageUrl});
         this.meta = serverMeta || {url: this.props.imageUrl};
-        if (serverMeta) {
+        if (serverMeta) 
+        {
             this.meta.socName = serverMeta.socName;
             this.sendMsg("active-soc-name", {value: this.meta.socName});
-        } else {
+        } else 
+        {
             this.meta.socName = this.activeSoc.name;
         }
 
@@ -2014,14 +2020,20 @@ export default class SseEditor3d extends React.Component {
         const fileUrl = SseGlobals.getFileUrl(this.props.imageUrl);
 
         // this.loadPCDFile(fileUrl).then(() => {
-        this.loadPLYFile(fileUrl).then(() => {
+        this.loadPLYFile(fileUrl).then(() => 
+        {
+            console.log(this.meta.rotationX)
+            console.log(this.meta.rotationY)
+            console.log(this.meta.rotationZ)
             this.rotateGeometry(this.meta.rotationX, this.meta.rotationY, this.meta.rotationZ);
             this.dataManager.loadBinaryFile(this.props.imageUrl + ".labels")
-                .then(result => {
+                .then(result => 
+                {
                     this.labelArray = result;
                     this.maxClassIndex = Math.max(...this.labelArray);
                     this.sendMsg("maximum-classIndex", {value: this.maxClassIndex});
-                }, () => {
+                }, () => 
+                {
                     this.saveBinaryLabels();
                 }).then(() => {
 
