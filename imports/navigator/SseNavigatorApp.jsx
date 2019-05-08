@@ -26,12 +26,14 @@ class SseNavigatorApp extends React.Component
         this.state = {pageLength: this.increment, selection: new Set()};
     }
 
-    serverCall(props) {
+    serverCall(props) 
+    {
 
         const params = props.match.params;
         const fi = params.fromIndex || 0;
         const ti = params.pageLength || this.increment;
-        if (this.state.data) {
+        if (this.state.data) 
+        {
             this.state.data.nextPage = this.state.data.previousPage = null;
             this.setState(this.state);
         }
@@ -42,11 +44,11 @@ class SseNavigatorApp extends React.Component
             {
 
                 let msg = "";
-                console.log("images:")
-                for (var i=0; i<res.images.length; i++)
-                {
-                    console.log(res.images[i])
-                }
+                // console.log("images:")
+                // for (var i=0; i<res.images.length; i++)
+                // {
+                //     console.log(res.images[i])
+                // }
                 if (res.folders.length > 0) 
                 {
                     msg += res.folders.length + " folder";
@@ -79,8 +81,11 @@ class SseNavigatorApp extends React.Component
         this.serverCall(this.props);
     }
 
-    startEditing(image) {
-        this.props.history.push(image.editUrl);
+    startEditing(image) 
+    {
+        // this.props.history.push(image.editUrl);
+        let win = window.open(image.editUrl, '_blank');
+        win.focus();
     }
 
     render() {
