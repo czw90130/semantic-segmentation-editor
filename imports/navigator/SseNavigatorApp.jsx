@@ -16,8 +16,10 @@ import SseTheme from "../common/SseTheme";
 import SseGlobals from "../common/SseGlobals";
 import SseMsg from "../common/SseMsg";
 
-class SseNavigatorApp extends React.Component {
-    constructor() {
+class SseNavigatorApp extends React.Component 
+{
+    constructor() 
+    {
         super();
         SseMsg.register(this);
         this.increment = 20;
@@ -33,17 +35,26 @@ class SseNavigatorApp extends React.Component {
             this.state.data.nextPage = this.state.data.previousPage = null;
             this.setState(this.state);
         }
-        Meteor.call("images", params.path, fi, ti, (err, res) => {
+        Meteor.call("images", params.path, fi, ti, (err, res) => 
+        {
             this.setState({data: res});
-            if (res) {
+            if (res) 
+            {
 
                 let msg = "";
-                if (res.folders.length > 0) {
+                console.log("images:")
+                for (var i=0; i<res.images.length; i++)
+                {
+                    console.log(res.images[i])
+                }
+                if (res.folders.length > 0) 
+                {
                     msg += res.folders.length + " folder";
                     if (res.folders.length > 1)
                         msg += "s";
                 }
-                if (res.images.length > 0) {
+                if (res.images.length > 0) 
+                {
                     if (res.folders.length > 0)
                         msg += ", ";
                     msg += res.imagesCount + " image";
@@ -52,7 +63,9 @@ class SseNavigatorApp extends React.Component {
                 }
                 this.sendMsg("folderStats", {message: msg});
 
-            }else{
+            }
+            else
+            {
                 console.log(err);
             }
         });

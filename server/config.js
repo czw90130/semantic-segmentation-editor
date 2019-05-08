@@ -46,7 +46,8 @@ const init = ()=> {
     try {
         const config = Meteor.settings;
 
-        if (config.configuration && config.configuration["images-folder"] != "") {
+        if (config.configuration && config.configuration["images-folder"] != "") 
+        {
             configurationFile.imagesFolder = config.configuration["images-folder"].replace(/\/$/, "");
         }else{
             configurationFile.imagesFolder = join(os.homedir(), "sse-images");
