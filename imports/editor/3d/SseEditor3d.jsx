@@ -539,7 +539,7 @@ export default class SseEditor3d extends React.Component {
         {
             this.camera.fov = 45;
         }
-        camera.updateProjectionMatrix();
+        this.camera.updateProjectionMatrix();
         this.renderer.render(this.scene, this.camera);
     }
 
@@ -576,7 +576,7 @@ export default class SseEditor3d extends React.Component {
 
         scene.background = new THREE.Color(0x111111);
 
-        const camera = this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, -10000, 10000);
+        const camera = this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
 
         scene.add(camera);
 
