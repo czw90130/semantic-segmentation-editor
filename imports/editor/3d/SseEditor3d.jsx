@@ -548,6 +548,7 @@ export default class SseEditor3d extends React.Component {
         
         this.camera.updateMatrix();
         this.orbiter.update();
+        this.renderer.render(this.scene, this.camera);
     }
 
     downloadFile() {
