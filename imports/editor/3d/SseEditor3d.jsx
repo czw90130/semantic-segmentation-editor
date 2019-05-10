@@ -547,6 +547,7 @@ export default class SseEditor3d extends React.Component {
         }
         
         this.camera.updateProjectionMatrix();
+        this.camera.updateMatrix();
         this.renderer.render(this.scene, this.camera);
     }
 
