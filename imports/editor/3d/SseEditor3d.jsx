@@ -531,13 +531,15 @@ export default class SseEditor3d extends React.Component {
 
     changeCameraFov()
     {
-        if (45 == this.camera.fov)
-        {
-            this.camera.fov = 1;
+        if (this.isPersCam)
+        {   
+            this.camera = this.orthCamera;
+            this.isPersCam = false;
         }
         else
         {
-            this.camera.fov = 45;
+            this.camera = this.persCamera;
+            this.isPersCam = true;
         }
         this.camera.updateProjectionMatrix();
         this.renderer.render(this.scene, this.camera);
@@ -575,8 +577,11 @@ export default class SseEditor3d extends React.Component {
         const scene = this.scene = new THREE.Scene();
 
         scene.background = new THREE.Color(0x111111);
-
-        const camera = this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
+        
+        this.isPersCam = true
+        this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -10000, 10000 );
+        this.persCamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
+        const camera = this.camera = this.persCamera;
 
         scene.add(camera);
 
