@@ -531,23 +531,23 @@ export default class SseEditor3d extends React.Component {
 
     changeCameraFov()
     {
-        if (this.isPersCam)
+        if (45 == this.camera.fov)
         {   
-            this.camera = this.orthCamera;
-            this.camera.up.set(0, 1, 0);
-            this.isPersCam = false;
+            this.camera.fov = 1;
+            this.camera.position.x *= 100
+            this.camera.position.y *= 100
+            this.camera.position.z *= 100
         }
         else
         {
-            this.camera = this.persCamera;
-            this.camera.up.set(0, -1, 0);
-            this.isPersCam = true;
+            this.camera.fov = 45;
+            this.camera.position.x /= 100
+            this.camera.position.y /= 100
+            this.camera.position.z /= 100
         }
-        this.orbiter.camera = this.camera;
-
-        this.camera.updateProjectionMatrix();
+        
+        this.camera.updateMatrix();
         this.orbiter.update();
-        this.renderer.render(this.scene, this.camera);
     }
 
     downloadFile() {
@@ -583,10 +583,9 @@ export default class SseEditor3d extends React.Component {
 
         scene.background = new THREE.Color(0x111111);
         
-        this.isPersCam = true
-        this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
-        this.persCamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
-        const camera = this.camera = this.persCamera;
+        // this.isPersCam = true
+        // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
+        const camera = this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
 
         scene.add(camera);
 
