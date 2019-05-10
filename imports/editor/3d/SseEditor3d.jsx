@@ -534,20 +534,19 @@ export default class SseEditor3d extends React.Component {
         if (45 == this.camera.fov)
         {   
             this.camera.fov = 1;
-            this.camera.position.x *= 5
-            this.camera.position.y *= 5
-            this.camera.position.z *= 5
+            // this.camera.position.x *= 5
+            // this.camera.position.y *= 5
+            // this.camera.position.z *= 5
         }
         else
         {
             this.camera.fov = 45;
-            this.camera.position.x /= 5
-            this.camera.position.y /= 5
-            this.camera.position.z /= 5
+            // this.camera.position.x /= 5
+            // this.camera.position.y /= 5
+            // this.camera.position.z /= 5
         }
         
         this.camera.updateMatrix();
-        this.orbiter.update();
         this.renderer.render(this.scene, this.camera);
     }
 
