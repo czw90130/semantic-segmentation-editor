@@ -534,16 +534,16 @@ export default class SseEditor3d extends React.Component {
         if (45 == this.camera.fov)
         {   
             this.camera.fov = 1;
-            this.camera.position.x *= 10
-            this.camera.position.y *= 10
-            this.camera.position.z *= 10
+            this.camera.position.x *= 5
+            this.camera.position.y *= 5
+            this.camera.position.z *= 5
         }
         else
         {
             this.camera.fov = 45;
-            this.camera.position.x /= 10
-            this.camera.position.y /= 10
-            this.camera.position.z /= 10
+            this.camera.position.x /= 5
+            this.camera.position.y /= 5
+            this.camera.position.z /= 5
         }
         
         this.camera.updateMatrix();
@@ -701,34 +701,33 @@ export default class SseEditor3d extends React.Component {
         let eye;
         const target = this.getCenter(this.visibleIndices);
         const slope = target.y - .5;
-
+        let fovfector =1
+        if(1 == this.camera.fov)
+        {
+            fovfector = 5
+        }
         switch (where) 
         {
             case "camera":
                 this.moveCamera(new THREE.Vector3(), new THREE.Vector3(0, 0, target.z));
                 break;
             case "front":
-                eye = new THREE.Vector3(target.x, slope, target.z - 1);
+                eye = new THREE.Vector3(target.x, slope, target.z - fovfector);
                 break;
             case "behind":
-                eye = new THREE.Vector3(target.x, slope, target.z + 1);
+                eye = new THREE.Vector3(target.x, slope, target.z + fovfector);
                 break;
             case "top":
-                eye = new THREE.Vector3(target.x, -1, 0.99999 * target.z);
+                eye = new THREE.Vector3(target.x, -fovfector, 0.99999 * target.z);
                 break;
             case "left":
-                eye = new THREE.Vector3(target.x - 1, slope, target.z);
+                eye = new THREE.Vector3(target.x - fovfector, slope, target.z);
                 break;
             case "right":
-                eye = new THREE.Vector3(target.x + 1, slope, target.z);
+                eye = new THREE.Vector3(target.x + fovfector, slope, target.z);
                 break;
         }
-        if(1 == this.camera.fov)
-        {
-            eye.x *= 10
-            eye.y *= 10
-            eye.z *= 10
-        }
+        
         if (eye)
             this.fitView(this.visibleIndices, eye);
 
