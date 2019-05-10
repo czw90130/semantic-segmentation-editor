@@ -534,12 +534,16 @@ export default class SseEditor3d extends React.Component {
         if (45 == this.camera.fov)
         {   
             this.camera.fov = 1;
-            this.camera.position *= 10
+            this.camera.position.x *= 10
+            this.camera.position.y *= 10
+            this.camera.position.z *= 10
         }
         else
         {
             this.camera.fov = 45;
-            this.camera.position /= 10
+            this.camera.position.x /= 10
+            this.camera.position.y /= 10
+            this.camera.position.z /= 10
         }
         
         this.camera.updateMatrix();
@@ -721,7 +725,9 @@ export default class SseEditor3d extends React.Component {
         }
         if(1 == this.camera.fov)
         {
-            eye *= 10
+            eye.x *= 10
+            eye.y *= 10
+            eye.z *= 10
         }
         if (eye)
             this.fitView(this.visibleIndices, eye);
