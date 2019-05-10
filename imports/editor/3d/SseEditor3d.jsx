@@ -531,6 +531,7 @@ export default class SseEditor3d extends React.Component {
 
     changeCameraFov()
     {
+        let campos = this.camera.position
         if (this.isPersCam)
         {   
             this.camera = this.orthCamera;
@@ -541,6 +542,7 @@ export default class SseEditor3d extends React.Component {
             this.camera = this.persCamera;
             this.isPersCam = true;
         }
+        this.camera.position.copy(campos)
         this.camera.updateProjectionMatrix();
         this.renderer.render(this.scene, this.camera);
     }
