@@ -534,16 +534,12 @@ export default class SseEditor3d extends React.Component {
         if (45 == this.camera.fov)
         {   
             this.camera.fov = 1;
-            this.camera.position.x *= 100
-            this.camera.position.y *= 100
-            this.camera.position.z *= 100
+            this.camera.position *= 10
         }
         else
         {
             this.camera.fov = 45;
-            this.camera.position.x /= 100
-            this.camera.position.y /= 100
-            this.camera.position.z /= 100
+            this.camera.position /= 10
         }
         
         this.camera.updateMatrix();
@@ -674,19 +670,26 @@ export default class SseEditor3d extends React.Component {
         return new THREE.Vector3().copy(this.orbiter.target);
     }
 
-    cameraPreset(where, bypassCameraPresetInfo = false) {
-        if (!bypassCameraPresetInfo) {
+    cameraPreset(where, bypassCameraPresetInfo = false) 
+    {
+        if (!bypassCameraPresetInfo) 
+        {
             const cpi = this.cameraPresetInfo;
-            if (cpi) {
-                if (cpi.where == where) {
+            if (cpi) 
+            {
+                if (cpi.where == where) 
+                {
                     this.moveCamera(cpi.eye, cpi.target);
                     this.cameraPresetInfo = undefined;
                     return;
-                } else {
+                } 
+                else 
+                {
                     cpi.where = where;
                 }
             }
-            else {
+            else 
+            {
 
                 this.cameraPresetInfo = {where, eye: this.cameraEye, target: this.cameraTarget};
             }
@@ -695,7 +698,8 @@ export default class SseEditor3d extends React.Component {
         const target = this.getCenter(this.visibleIndices);
         const slope = target.y - .5;
 
-        switch (where) {
+        switch (where) 
+        {
             case "camera":
                 this.moveCamera(new THREE.Vector3(), new THREE.Vector3(0, 0, target.z));
                 break;
@@ -714,6 +718,10 @@ export default class SseEditor3d extends React.Component {
             case "right":
                 eye = new THREE.Vector3(target.x + 1, slope, target.z);
                 break;
+        }
+        if(1 == this.camera.fov)
+        {
+            eye *= 10
         }
         if (eye)
             this.fitView(this.visibleIndices, eye);
@@ -1549,7 +1557,8 @@ export default class SseEditor3d extends React.Component {
         this.scene.add(axes);
     }
 
-    getCenter(forEachable) {
+    getCenter(forEachable) 
+    {
         const geometry = new THREE.Geometry();
         forEachable.forEach(idx => {
             const item = this.cloudData[idx];
