@@ -531,19 +531,27 @@ export default class SseEditor3d extends React.Component {
 
     changeCameraFov()
     {
-        let campos = this.camera.position
         if (this.isPersCam)
         {   
             this.camera = this.orthCamera;
+            this.camera.up.set(0, 1, 0);
             this.isPersCam = false;
         }
         else
         {
             this.camera = this.persCamera;
+            this.camera.up.set(0, -1, 0);
             this.isPersCam = true;
         }
-        this.camera.position.copy(campos)
+
+        this.orbiter = new THREE.OrbitControls(this, this.camera, this.canvasContainer, this);
+        this.orbiter.activate();
+        this.orbiter.addEventListener("start", this.orbiterStart.bind(this), false);
+        this.orbiter.addEventListener("change", this.orbiterChange.bind(this), false);
+        this.orbiter.addEventListener("end", this.orbiterEnd.bind(this), false);
+
         this.camera.updateProjectionMatrix();
+        this.orbiter.update();
         this.renderer.render(this.scene, this.camera);
     }
 
@@ -613,7 +621,7 @@ export default class SseEditor3d extends React.Component {
         this.camera.up.set(0, -1, 0);
 
         this.setupRaycaster();
-
+        
         this.orbiter = new THREE.OrbitControls(this, this.camera, this.canvasContainer, this);
         this.orbiter.activate();
         this.orbiter.addEventListener("start", this.orbiterStart.bind(this), false);
