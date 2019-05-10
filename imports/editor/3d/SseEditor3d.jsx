@@ -514,7 +514,7 @@ export default class SseEditor3d extends React.Component {
 
         this.onMsg("tagsChanged", () => this.saveAll());
 
-        this.onMesg("changeCameraFov", () => this.changeCameraFov());
+        this.onMsg("changeCameraFov", () => this.changeCameraFov());
 
         this.onMsg("downloadFile", () => this.downloadFile());
         this.onMsg("downloadText", () => this.downloadText());
