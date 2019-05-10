@@ -703,10 +703,10 @@ export default class SseEditor3d extends React.Component {
         const target = this.getCenter(this.visibleIndices);
         const slope = target.y - .5;
         let fovfector =1
-        if(1 == this.camera.fov)
-        {
-            fovfector = 5
-        }
+        // if(1 == this.camera.fov)
+        // {
+        //     fovfector = 5
+        // }
         switch (where) 
         {
             case "camera":
