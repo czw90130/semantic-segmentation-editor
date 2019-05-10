@@ -4,7 +4,7 @@ import SseToolbar from "../../common/SseToolbar";
 import SseBranding from "../../common/SseBranding";
 import {
     CircleOutline, FileDownloadOutline, Gesture, Minus, Plus, PlusMinus, Redo, SquareOutline,
-    Undo
+    Undo, Video
 } from 'mdi-material-ui';
 
 export default class SseToolbar3d extends SseToolbar {
