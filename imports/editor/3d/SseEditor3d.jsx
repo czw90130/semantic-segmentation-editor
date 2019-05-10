@@ -579,7 +579,7 @@ export default class SseEditor3d extends React.Component {
         scene.background = new THREE.Color(0x111111);
         
         this.isPersCam = true
-        this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -10000, 10000 );
+        this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-0.5, window.innerWidth/0.5, window.innerHeight/0.5, window.innerHeight/-0.5, -10000, 10000 );
         this.persCamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
         const camera = this.camera = this.persCamera;
 
