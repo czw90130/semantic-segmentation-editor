@@ -543,12 +543,7 @@ export default class SseEditor3d extends React.Component {
             this.camera.up.set(0, -1, 0);
             this.isPersCam = true;
         }
-
-        this.orbiter = new THREE.OrbitControls(this, this.camera, this.canvasContainer, this);
-        this.orbiter.activate();
-        this.orbiter.addEventListener("start", this.orbiterStart.bind(this), false);
-        this.orbiter.addEventListener("change", this.orbiterChange.bind(this), false);
-        this.orbiter.addEventListener("end", this.orbiterEnd.bind(this), false);
+        this.orbiter.camera = this.camera;
 
         this.camera.updateProjectionMatrix();
         this.orbiter.update();
@@ -589,7 +584,7 @@ export default class SseEditor3d extends React.Component {
         scene.background = new THREE.Color(0x111111);
         
         this.isPersCam = true
-        this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-1, window.innerWidth/1, window.innerHeight/1, window.innerHeight/-1, -1000, 10000 );
+        this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
         this.persCamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
         const camera = this.camera = this.persCamera;
 
