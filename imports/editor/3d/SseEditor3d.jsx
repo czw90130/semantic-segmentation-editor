@@ -514,7 +514,7 @@ export default class SseEditor3d extends React.Component {
 
         this.onMsg("tagsChanged", () => this.saveAll());
 
-        this.onMsg("changeCameraFov", () => this.changeCameraFov());
+        // this.onMsg("changeCameraFov", () => this.changeCameraFov());
 
         this.onMsg("downloadFile", () => this.downloadFile());
         this.onMsg("downloadText", () => this.downloadText());
@@ -529,27 +529,26 @@ export default class SseEditor3d extends React.Component {
         SseMsg.unregister(this);
     }
 
-    changeCameraFov()
-    {
-        if (45 == this.camera.fov)
-        {   
-            this.camera.fov = 0.1;
-            this.camera.position.x *= 100
-            this.camera.position.y *= 100
-            this.camera.position.z *= 100
-        }
-        else
-        {
-            this.camera.fov = 45;
-            this.camera.position.x /= 100
-            this.camera.position.y /= 100
-            this.camera.position.z /= 100
-        }
+    // changeCameraFov()
+    // {
+    //     if (15 == this.camera.fov)
+    //     {   
+    //         this.camera.fov = 1;
+    //         // this.camera.position.x *= 5
+    //         // this.camera.position.y *= 5
+    //         // this.camera.position.z *= 5
+    //     }
+    //     else
+    //     {
+    //         this.camera.fov = 15;
+    //         // this.camera.position.x /= 5
+    //         // this.camera.position.y /= 5
+    //         // this.camera.position.z /= 5
+    //     }
         
-        this.camera.updateProjectionMatrix();
-        this.camera.updateMatrix();
-        this.renderer.render(this.scene, this.camera);
-    }
+    //     this.camera.updateProjectionMatrix();
+    //     this.renderer.render(this.scene, this.camera);
+    // }
 
     downloadFile() {
         // window.open("/api/pcdfile" + this.props.imageUrl, "_blank");
@@ -586,7 +585,7 @@ export default class SseEditor3d extends React.Component {
         
         // this.isPersCam = true
         // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
-        const camera = this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.001, 99999);
+        const camera = this.camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.001, 99999);
 
         scene.add(camera);
 
