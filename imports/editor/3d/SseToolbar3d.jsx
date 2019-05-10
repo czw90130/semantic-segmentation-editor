@@ -42,6 +42,9 @@ export default class SseToolbar3d extends SseToolbar {
         // this.addCommand("downloadFileCommand", "PCD Output as File", false, "", "downloadFile", FileDownloadOutline);
         this.addCommand("downloadTextCommand", "PLY Output as Text", false, "", "downloadText", FileDownloadOutline);
         this.addCommand("downloadFileCommand", "PLY Output as File", false, "", "downloadFile", FileDownloadOutline);
+
+        this.addCommand("changeCameraFovCommand", "Change Camera FOV", false, "O", "changeCameraFov", Video);
+
         this.sendMsg("selector");
         this.sendMsg("selection-mode-add");
     }
@@ -78,6 +81,12 @@ export default class SseToolbar3d extends SseToolbar {
                     <div className="v group">
                         {this.renderCheckbox("selectionOutlineCommand", true)}
                         {this.renderCheckbox("globalboxCommand", true)}
+                    </div>
+                </div>
+                <div className="vflex">
+                    <div className="tool-title">Camera FOV</div>
+                    <div className="v group">
+                        {this.renderCommand("changeCameraFovCommand")}
                     </div>
                 </div>
                 <div className="vflex">

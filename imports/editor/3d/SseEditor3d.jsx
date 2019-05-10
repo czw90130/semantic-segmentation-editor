@@ -514,6 +514,8 @@ export default class SseEditor3d extends React.Component {
 
         this.onMsg("tagsChanged", () => this.saveAll());
 
+        this.onMesg("changeCameraFov", () => this.changeCameraFov());
+
         this.onMsg("downloadFile", () => this.downloadFile());
         this.onMsg("downloadText", () => this.downloadText());
         this.onMsg("color-boost", (arg => {
@@ -522,8 +524,23 @@ export default class SseEditor3d extends React.Component {
         }));
     }
 
-    componentWillUnmount(){
+    componentWillUnmount()
+    {
         SseMsg.unregister(this);
+    }
+
+    changeCameraFov()
+    {
+        if (45 == this.camera.fov)
+        {
+            this.camera.fov = 1;
+        }
+        else
+        {
+            this.camera.fov = 45;
+        }
+        camera.updateProjectionMatrix();
+        this.renderer.render(this.scene, this.camera);
     }
 
     downloadFile() {
@@ -559,9 +576,7 @@ export default class SseEditor3d extends React.Component {
 
         scene.background = new THREE.Color(0x111111);
 
-        const camera = this.camera = new THREE.PerspectiveCamera(5, window.innerWidth / window.innerHeight, -10000, 10000);
-        //orthCamera
-        // const camera = this.camera = new THREE.OrthographicCamera(window.innerWidth/-14.5,window.innerWidth/14.5,window.innerHeight/14.5,window.innerHeight/-14.5,-100 , 10000);
+        const camera = this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, -10000, 10000);
 
         scene.add(camera);
 
