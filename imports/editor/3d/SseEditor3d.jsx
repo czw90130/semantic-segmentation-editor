@@ -585,7 +585,7 @@ export default class SseEditor3d extends React.Component {
         
         // this.isPersCam = true
         // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
-        const camera = this.camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, -10000, 10000);
+        const camera = this.camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, -10000, 99999);
 
         scene.add(camera);
 
