@@ -618,8 +618,14 @@ export default class SseEditor3d extends React.Component {
         this.frustrumIndices = new Set();
         const scene = this.scene = new THREE.Scene();
 
-        // scene.background = new THREE.Color(0x111111);
-        scene.background = this.makeTextWaterMark(Meteor.user().username, 0, 0);
+        
+        var wmGeometry=new THREE.PlaneBufferGeometry(2,2);
+        var texture=this.makeTextWaterMark(Meteor.user().username, 0, 0);
+        var wmMaterial=new THREE.MeshBasicMaterial({map:texture});
+        var wmPlane=new THREE.Mesh(wmGeometry,wmMaterial);
+        scene.add( wmPlane );
+        scene.background = new THREE.Color(0x111111);
+        // scene.background = 
         
         // this.isPersCam = true
         // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
