@@ -70,7 +70,7 @@ export default class SseNavigatorToolbar extends React.Component {
                     ))}
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    {{> loginButtons}}
+                    {loginButtons}
                 </ul>
                 <SseNavigatorMenu history={this.props.history}/>
             </Toolbar>
