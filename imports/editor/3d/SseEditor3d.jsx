@@ -570,7 +570,7 @@ export default class SseEditor3d extends React.Component {
         this.textCtx.fillStyle = "black";
         this.textCtx.clearRect(0, 0, textCtx.canvas.width, textCtx.canvas.height);
         this.textCtx.fillText(text, width / 2, height / 2);
-        return textCtx.canvas;
+        return this.textCtx.canvas;
     }
 
     makeTextWaterMark(text, width, height)
