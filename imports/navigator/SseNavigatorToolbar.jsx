@@ -1,6 +1,5 @@
 import React from "react";
 import {Button, Toolbar} from "@material-ui/core";
-import {Button, Toolbar} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {ChevronRight} from "mdi-material-ui";
 import url from "url";
