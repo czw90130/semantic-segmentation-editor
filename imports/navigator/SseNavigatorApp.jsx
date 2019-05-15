@@ -102,24 +102,6 @@ class SseNavigatorApp extends React.Component
                 <MuiThemeProvider theme={new SseTheme().theme}>
                     <div className="w100">
                         <SseNavigatorToolbar history={this.props.history}/>
-                        <div className="sse-pager hflex">
-                            <Link to={this.state.data.previousPage || "#"}>
-                                <IconButton touch="true"
-                                            classes={{"colorPrimary": "white"}}
-                                            className={this.state.data.previousPage ? "" : "visibility-hidden"}>
-                                    <ArrowLeftBold/>
-                                </IconButton>
-                            </Link>
-                            <SseText msgKey="folderStats" className="sse-folder-stats"></SseText>
-                            <Link to={this.state.data.nextPage || "#"}>
-                                <IconButton touch="true"
-                                            classes={{"colorPrimary": "white"}}
-                                            className={this.state.data.nextPage ? "" : "visibility-hidden"}>
-                                    <ArrowRightBold/>
-                                </IconButton>
-                            </Link>
-                        </div>
-    
                         <h1> Please Login!</h1>
     
                     </div>

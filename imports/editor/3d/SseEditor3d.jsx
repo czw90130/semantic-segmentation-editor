@@ -570,6 +570,9 @@ export default class SseEditor3d extends React.Component {
             return "(" + s(this.x) + ", " + s(this.y) + ", " + s(this.z) + ")";
         };
         */
+
+       console.log(Meteor.user())
+
         this.canvas3d = $("#canvas3d").get(0);
         this.canvas2d = $("#canvas2d").get(0);
         this.context2d = this.canvas2d.getContext("2d");
@@ -1094,6 +1097,7 @@ export default class SseEditor3d extends React.Component {
     }
 
     resizeCanvas() {
+        
         const box = this.canvasContainer.getBoundingClientRect();
         this.viewWidth = box.width;
         this.viewHeight = box.height;
