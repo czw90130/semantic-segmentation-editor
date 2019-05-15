@@ -619,7 +619,7 @@ export default class SseEditor3d extends React.Component {
         const scene = this.scene = new THREE.Scene();
 
         // scene.background = new THREE.Color(0x111111);
-        scene.background = makeTextWaterMark(text, width, height)
+        scene.background = this.makeTextWaterMark(text, width, height)
         
         // this.isPersCam = true
         // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
