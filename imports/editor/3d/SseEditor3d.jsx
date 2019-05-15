@@ -576,7 +576,7 @@ export default class SseEditor3d extends React.Component {
     makeTextWaterMark(text, width, height)
     {
         this.textCtx = document.createElement("canvas").getContext("2d");
-        var gl = this.textWm;
+        var gl = this.textWm.getContext('webgl');
         var textTex = this.textWm.createTexture();
         gl.bindTexture(gl.TEXTURE_2D, textTex);
         var textCanvas = makeTextCanvas(text, text.length*15, 26);
@@ -605,7 +605,7 @@ export default class SseEditor3d extends React.Component {
 
         console.log(Meteor.user())
         
-        this.textWm = document.createElement("canvas").getContext("2d");
+        this.textWm = document.createElement("canvas");
 
         this.canvas3d = $("#canvas3d").get(0);
         this.canvas2d = $("#canvas2d").get(0);
