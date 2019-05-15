@@ -560,7 +560,39 @@ export default class SseEditor3d extends React.Component {
         window.open("/api/plytext" + this.props.imageUrl, "_blank");
     }
 
+    makeTextCanvas(text, width, height) 
+    {
+        this.textCtx.canvas.width  = width;
+        this.textCtx.canvas.height = height;
+        this.textCtx.font = "20px monospace";
+        this.textCtx.textAlign = "center";
+        this.textCtx.textBaseline = "middle";
+        this.textCtx.fillStyle = "black";
+        this.textCtx.clearRect(0, 0, textCtx.canvas.width, textCtx.canvas.height);
+        this.textCtx.fillText(text, width / 2, height / 2);
+        return textCtx.canvas;
+    }
+
+    makeTextWaterMark(text, width, height)
+    {
+        this.textCtx = document.createElement("canvas").getContext("2d");
+        var gl = this.textWm;
+        var textTex = this.textWm.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, textTex);
+        var textCanvas = makeTextCanvas(text, text.length*15, 26);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textCanvas);
+        // make sure we can render it even if it's not a power of 2
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+        return textTex
+
+        
+    }
+
     init() {
+        
         this.sendMsg("bottom-right-label", {message: "Downloading PLY File..."});
         // this.sendMsg("bottom-right-label", {message: "Downloading PCD File..."});
         /*
@@ -571,7 +603,9 @@ export default class SseEditor3d extends React.Component {
         };
         */
 
-       console.log(Meteor.user())
+        console.log(Meteor.user())
+        
+        this.textWm = document.createElement("canvas").getContext("2d");
 
         this.canvas3d = $("#canvas3d").get(0);
         this.canvas2d = $("#canvas2d").get(0);
@@ -584,7 +618,8 @@ export default class SseEditor3d extends React.Component {
         this.frustrumIndices = new Set();
         const scene = this.scene = new THREE.Scene();
 
-        scene.background = new THREE.Color(0x111111);
+        // scene.background = new THREE.Color(0x111111);
+        scene.background = makeTextWaterMark(text, width, height)
         
         // this.isPersCam = true
         // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
