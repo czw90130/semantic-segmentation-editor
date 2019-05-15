@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {ChevronRight} from "mdi-material-ui";
 import url from "url";
 import SseBranding from "../common/SseBranding";
+import AccountsUIWrapper from "../common/AccountsUIWrapper";
 import SseNavigatorMenu from "./SseNavigatorMenu";
 
 
@@ -68,6 +69,7 @@ export default class SseNavigatorToolbar extends React.Component {
                         </div>
                     ))}
                 </div>
+                <AccountsUIWrapper />
                 <SseNavigatorMenu history={this.props.history}/>
             </Toolbar>
         );

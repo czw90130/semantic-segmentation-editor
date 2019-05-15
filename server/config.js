@@ -4,6 +4,7 @@ import {mkdirSync, existsSync} from "fs";
 import os from "os";
 import download from "download";
 
+
 const configurationFile = {};
 const defaultClasses = [{
     "name": "33 Classes", "objects": [
@@ -49,7 +50,9 @@ const init = ()=> {
         if (config.configuration && config.configuration["images-folder"] != "") 
         {
             configurationFile.imagesFolder = config.configuration["images-folder"].replace(/\/$/, "");
-        }else{
+        }
+        else
+        {
             configurationFile.imagesFolder = join(os.homedir(), "sse-images");
         }
 
