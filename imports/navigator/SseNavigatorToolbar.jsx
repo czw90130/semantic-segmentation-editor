@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Toolbar} from "@material-ui/core";
-
+import {Button, Toolbar} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {ChevronRight} from "mdi-material-ui";
 import url from "url";
@@ -69,7 +69,9 @@ export default class SseNavigatorToolbar extends React.Component {
                         </div>
                     ))}
                 </div>
-
+                <ul class="nav navbar-nav navbar-right">
+                    {{> loginButtons}}
+                </ul>
                 <SseNavigatorMenu history={this.props.history}/>
             </Toolbar>
         );
