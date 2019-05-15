@@ -568,7 +568,7 @@ export default class SseEditor3d extends React.Component {
         this.textCtx.textAlign = "center";
         this.textCtx.textBaseline = "middle";
         this.textCtx.fillStyle = "black";
-        this.textCtx.clearRect(0, 0, textCtx.canvas.width, textCtx.canvas.height);
+        this.textCtx.clearRect(0, 0, this.textCtx.canvas.width, this.textCtx.canvas.height);
         this.textCtx.fillText(text, width / 2, height / 2);
         return this.textCtx.canvas;
     }
