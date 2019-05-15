@@ -577,7 +577,7 @@ export default class SseEditor3d extends React.Component {
     {
         this.textCtx = document.createElement("canvas").getContext("2d");
         var gl = this.textWm.getContext('webgl');
-        var textTex = this.textWm.createTexture();
+        var textTex = gl.createTexture();
         gl.bindTexture(gl.TEXTURE_2D, textTex);
         var textCanvas = makeTextCanvas(text, text.length*15, 26);
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textCanvas);
