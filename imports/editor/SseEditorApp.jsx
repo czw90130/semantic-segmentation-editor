@@ -8,7 +8,7 @@ class SseEditorApp extends React.Component {
 
     render() {
         console.log(Meteor.userId())
-        console.log(Meteor.user().username)
+        console.log(Meteor.user())
         if (!this.props.subReady)
             return null;
         if (this.props.mode == "2d")
