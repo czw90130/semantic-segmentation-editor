@@ -38,6 +38,7 @@ else
 {
     basepath += '%2Fnotautorized'
 }
+console.log(basepath)
 export const renderRoutes = () => (
     <Router history={browserHistory}>
         <div>
@@ -45,8 +46,6 @@ export const renderRoutes = () => (
             <Route path="/edit/:path" component={SseEditorApp}/>
             <Route exact path="/edit/" render={()=>(<Redirect to={basepath}/>)}/>
             <Route exact path="/edit" render={()=>(<Redirect to={basepath}/>)}/>
-            {/* <Route exact path="/browse/0/20/" render={()=>(<Redirect to={basepath}/>)}/>
-            <Route exact path="/browse/0/20" render={()=>(<Redirect to={basepath}/>)}/> */}
             <Route path="/browse/:fromIndex/:pageLength/:path?" component={SseNavigatorApp}/>
             <Route path="/annotated" component={SseAllAnnotated}/>
         </div>
