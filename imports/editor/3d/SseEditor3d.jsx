@@ -626,8 +626,8 @@ export default class SseEditor3d extends React.Component {
         this.bitmap = document.createElement('canvas');
         this.bitmap.width = 100;
         this.bitmap.height = 100;
-        this.bitmap.style.width = can.width + 'px';
-        this.bitmap.style.height = can.height + 'px';
+        this.bitmap.style.width = this.bitmap.width + 'px';
+        this.bitmap.style.height = this.bitmap.height + 'px';
         // this.bitmap.getContext('2d')
 
         var ctx = this.bitmap.getContext('2d', {antialias: false});
