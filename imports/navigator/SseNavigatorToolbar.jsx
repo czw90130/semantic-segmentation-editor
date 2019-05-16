@@ -20,6 +20,7 @@ export default class SseNavigatorToolbar extends React.Component {
 
     componentDidMount() {
         this.updateBreadCrumb();
+        
     }
 
     updateBreadCrumb()
@@ -27,7 +28,25 @@ export default class SseNavigatorToolbar extends React.Component {
         var basepath = "/browse/0/20/"
         if(Meteor.userId()) // && existsSync(join(configurationFile.imagesFolder, Meteor.userId())))
         {
-            basepath += '%2F' + Meteor.userId()
+            Meteor.call("isAutorized", params.path, fi, ti, (err, res) => 
+            {
+                if (res)
+                {
+                    if(res.autorstate)
+                    {
+                        basepath += '%2F' + Meteor.userId()
+                    }
+                    else
+                    {
+                        basepath += '%2Fnotautorized'
+                    }
+                }
+                else
+                {
+                    basepath += '%2Fnotautorized'
+                }
+            });
+           
         }
         else
         {

@@ -66,7 +66,17 @@ Meteor.methods({
             SseProps.upsert({key: "tags"}, {key: "tags", value: Array.from(tags)});
         },
     */
-    'images'(folder, pageIndex, pageLength) {
+    'isAutorized'(folder)
+    {
+        const folderSlash = folder ? decodeURIComponent(folder) + "/" : "/";
+        const userfloder = join(config.imagesFolder, (folderSlash ? folderSlash : ""));
+        const existing = existsSync(userfloder);
+        const res = {autorstate:existing}
+        return res
+    },
+
+    'images'(folder, pageIndex, pageLength) 
+    {
         const isDirectory = source => lstatSync(source).isDirectory();
         const isImage = source => {
             const stat = lstatSync(source);
