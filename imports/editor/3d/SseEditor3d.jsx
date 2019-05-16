@@ -626,25 +626,21 @@ export default class SseEditor3d extends React.Component {
 
         this.backgroundScene = new THREE.Scene();
         this.backgroundCamera = new THREE.Camera();
-        this.backgroundMesh = null
-        this.textureLoader.load("./bitmap_labeling.png", function( texture ) 
-        {
-            this.backgroundMesh = new THREE.Mesh(
-                new THREE.PlaneGeometry(2, 2, 0),
-                new THREE.MeshBasicMaterial(
-                {
-                    map: texture
-                })
-            );
+        
+        this.backgroundMesh = new THREE.Mesh(
+            new THREE.PlaneGeometry(100, 100, 4, 4),
+            new THREE.MeshBasicMaterial(
+            {
+                color: 0x777777
+            })
+        );
 
-            this.backgroundMesh.material.depthTest = false;
-            this.backgroundMesh.material.depthWrite = false;
+        this.backgroundMesh.material.depthTest = false;
+        this.backgroundMesh.material.depthWrite = false;
 
-
-            this.backgroundScene.add( this.backgroundCamera );
-            this.backgroundScene.add( this.backgroundMesh );
-        });
-
+        this.backgroundScene.add( this.backgroundCamera );
+        this.backgroundScene.add( this.backgroundMesh );
+        
         // this.isPersCam = true
         // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
         const camera = this.camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.001, 99999);
