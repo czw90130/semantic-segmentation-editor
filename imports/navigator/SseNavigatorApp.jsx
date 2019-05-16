@@ -96,7 +96,7 @@ class SseNavigatorApp extends React.Component
         {
             return <div>{this.state.data.error}</div>
         }
-        if(null == Meteor.userId() || -1 == document.URL.indexOf(notautorized))
+        if(null == Meteor.userId())
         {
             return (
                 <MuiThemeProvider theme={new SseTheme().theme}>
@@ -108,6 +108,7 @@ class SseNavigatorApp extends React.Component
                 </MuiThemeProvider>
             );
         }
+
         return (
             <MuiThemeProvider theme={new SseTheme().theme}>
                 <div className="w100">
