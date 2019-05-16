@@ -659,8 +659,8 @@ export default class SseEditor3d extends React.Component {
         const renderer = this.renderer = new THREE.WebGLRenderer(rendererAttrs);
         renderer.autoClear = false;
 
-        renderer.clear();
-	    renderer.render( this.backgroundScene, this.backgroundCamera );
+        // renderer.clear();
+	    // renderer.render( this.backgroundScene, this.backgroundCamera );
 
         renderer.setPixelRatio(window.devicePixelRatio);
         $(renderer.domElement).addClass("absoluteTopLeftZeroW100H100");
