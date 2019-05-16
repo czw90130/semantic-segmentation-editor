@@ -635,7 +635,6 @@ export default class SseEditor3d extends React.Component {
         {
             this.bitmap.width = 256
         }
-        this.bitmap.width = 16*Meteor.user().username.length;
         this.bitmap.height = 32;
         this.bitmap.style.width = this.bitmap.width + 'px';
         this.bitmap.style.height = this.bitmap.height + 'px';
