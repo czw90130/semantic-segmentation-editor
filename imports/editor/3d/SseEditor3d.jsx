@@ -659,9 +659,9 @@ export default class SseEditor3d extends React.Component {
         this.texture.wrapS = this.texture.wrapT = THREE.RepeatWrapping;
         this.texture.offset.set( 0, 0 );
         let wrep = 25 - Meteor.user().username.length/2
-        if(wrep<10)
+        if(wrep<5)
         {
-            wrep = 10
+            wrep = 5
         }
         this.texture.repeat.set(wrep, 40);
         this.texture.rotation = 1
