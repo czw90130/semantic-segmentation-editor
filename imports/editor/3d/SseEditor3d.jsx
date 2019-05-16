@@ -621,8 +621,25 @@ export default class SseEditor3d extends React.Component {
         // scene.background = new THREE.Color(0x111111);
         // scene.background = this.makeTextWaterMark(Meteor.user().username, 0, 0);
 
-        this.textureLoader = new THREE.TextureLoader();
-        this.textureLoader.setCrossOrigin("");
+        this.wmtext = 'cats'
+        //create image
+        this.bitmap = createRetinaCanvas(100, 100);
+        var ctx = this.bitmap.getContext('2d', {antialias: false});
+        ctx.font = 'Bold 20px Arial';
+
+        ctx.beginPath();
+        ctx.rect(0, 0, 100, 100);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+
+        ctx.fillStyle = 'white';
+        ctx.fillText(this.wmtext, 0, 20);
+        ctx.strokeStyle = 'black';
+        ctx.strokeText(this.wmtext, 0, 20);
+
+        // canvas contents will be used for a texture
+        this.texture = new THREE.Texture(this.bitmap) 
+        this.texture.needsUpdate = true;
 
         this.backgroundScene = new THREE.Scene();
         this.backgroundCamera = new THREE.Camera();
@@ -631,7 +648,8 @@ export default class SseEditor3d extends React.Component {
             new THREE.PlaneGeometry(100, 100, 4, 4),
             new THREE.MeshBasicMaterial(
             {
-                color: 0x777777
+                // color: 0x777777
+                map: this.texture
             })
         );
 
@@ -640,7 +658,7 @@ export default class SseEditor3d extends React.Component {
 
         this.backgroundScene.add( this.backgroundCamera );
         this.backgroundScene.add( this.backgroundMesh );
-        
+
         // this.isPersCam = true
         // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
         const camera = this.camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.001, 99999);
