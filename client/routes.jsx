@@ -22,6 +22,8 @@ if(Meteor.userId()) // && existsSync(join(configurationFile.imagesFolder, Meteor
             if(res.autorstate)
             {
                 basepath += '%2F' + Meteor.userId()
+                console.log("innerbasepath")
+                console.log(basepath)
             }
             else
             {
@@ -33,11 +35,13 @@ if(Meteor.userId()) // && existsSync(join(configurationFile.imagesFolder, Meteor
             basepath += '%2Fnotautorized'
         }
     });
+
 }
 else
 {
     basepath += '%2Fnotautorized'
 }
+console.log("outerbasepath1")
 console.log(basepath)
 export const renderRoutes = () => (
     <Router history={browserHistory}>
@@ -51,3 +55,5 @@ export const renderRoutes = () => (
         </div>
     </Router>
 );
+console.log("outerbasepath2")
+console.log(basepath)
