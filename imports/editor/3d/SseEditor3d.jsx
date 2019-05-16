@@ -655,7 +655,7 @@ export default class SseEditor3d extends React.Component {
         this.backgroundCamera = new THREE.Camera();
         
         this.backgroundMesh = new THREE.Mesh(
-            new THREE.PlaneGeometry(1,1,1,1),
+            new THREE.PlaneGeometry(2,2,1,1),
             new THREE.MeshBasicMaterial(
             {
                 // color: 0x777777
