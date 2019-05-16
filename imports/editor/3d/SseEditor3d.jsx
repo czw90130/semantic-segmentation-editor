@@ -635,16 +635,19 @@ export default class SseEditor3d extends React.Component {
         // scene.background = new THREE.Color(0x111111);
         // scene.background = this.makeTextWaterMark(Meteor.user().username, 0, 0);
 
-        bgTexture = loader.load("./bitmap_labeling.png",
+        loader = new THREE.TextureLoader();
+        loader.setCrossOrigin("");
+
+        this.bgTexture = loader.load("./bitmap_labeling.png",
             function ( texture ) {
                 var img = texture.image;
                 bgWidth= img.width;
                 bgHeight = img.height;
                 this.bgresize();
             } );
-        scene.background = bgTexture;
-        bgTexture.wrapS = THREE.MirroredRepeatWrapping;
-        bgTexture.wrapT = THREE.MirroredRepeatWrapping;
+        scene.background = this.bgTexture;
+        this.bgTexture.wrapS = THREE.MirroredRepeatWrapping;
+        this.bgTexture.wrapT = THREE.MirroredRepeatWrapping;
 
         // this.isPersCam = true
         // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
