@@ -17,6 +17,8 @@ if(Meteor.userId()) // && existsSync(join(configurationFile.imagesFolder, Meteor
     {
         if (res)
         {
+            console.log("res.autorstate")
+            console.log(res.autorstate)
             if(res.autorstate)
             {
                 basepath += '%2F' + Meteor.userId()
