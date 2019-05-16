@@ -640,15 +640,13 @@ export default class SseEditor3d extends React.Component {
 
         ctx.fillStyle = '#666666';
         ctx.fillText(Meteor.user().username, 0, 20);
-        ctx.strokeStyle = 'black';
-        ctx.strokeText(Meteor.user().username, 0, 20);
 
         // canvas contents will be used for a texture
         this.texture = new THREE.Texture(this.bitmap) 
         this.texture.needsUpdate = true;
         this.texture.wrapS = this.texture.wrapT = THREE.RepeatWrapping;
         this.texture.offset.set( 0, 0 );
-        this.texture.repeat.set( 5*Meteor.user().username.length, 45);
+        this.texture.repeat.set( 4*Meteor.user().username.length, 40);
         this.texture.rotation = 1
 
         this.backgroundScene = new THREE.Scene();
