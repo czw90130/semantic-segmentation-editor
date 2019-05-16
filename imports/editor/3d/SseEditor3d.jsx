@@ -621,7 +621,6 @@ export default class SseEditor3d extends React.Component {
         // scene.background = new THREE.Color(0x111111);
         // scene.background = this.makeTextWaterMark(Meteor.user().username, 0, 0);
 
-        this.wmtext = 'cats'
         //create image
         this.bitmap = document.createElement('canvas');
         this.bitmap.width = 64;
@@ -636,13 +635,13 @@ export default class SseEditor3d extends React.Component {
 
         ctx.beginPath();
         ctx.rect(0, 0, 64, 32);
-        ctx.fillStyle = 'red';
+        ctx.fillStyle = 'rgb(0x11,0x11,0x11)';
         ctx.fill();
 
-        ctx.fillStyle = 'white';
-        ctx.fillText(this.wmtext, 0, 20);
-        ctx.strokeStyle = 'black';
-        ctx.strokeText(this.wmtext, 0, 20);
+        ctx.fillStyle = 'black';
+        ctx.fillText(Meteor.user().username, 0, 20);
+        ctx.strokeStyle = 'white';
+        ctx.strokeText(Meteor.user().username, 0, 20);
 
         // canvas contents will be used for a texture
         this.texture = new THREE.Texture(this.bitmap) 
