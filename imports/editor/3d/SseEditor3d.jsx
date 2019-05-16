@@ -647,6 +647,9 @@ export default class SseEditor3d extends React.Component {
         // canvas contents will be used for a texture
         this.texture = new THREE.Texture(this.bitmap) 
         this.texture.needsUpdate = true;
+        this.texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+        this.texture.offset.set( 0, 0 );
+        this.texture.repeat.set( 8, 8 );
 
         this.backgroundScene = new THREE.Scene();
         this.backgroundCamera = new THREE.Camera();
