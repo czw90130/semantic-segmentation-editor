@@ -648,7 +648,8 @@ export default class SseEditor3d extends React.Component {
         this.texture.needsUpdate = true;
         this.texture.wrapS = this.texture.wrapT = THREE.RepeatWrapping;
         this.texture.offset.set( 0, 0 );
-        this.texture.repeat.set( 8, 8 );
+        this.texture.repeat.set( 4*Meteor.user().username.length, 32);
+        this.texture.rotation.set(1)
 
         this.backgroundScene = new THREE.Scene();
         this.backgroundCamera = new THREE.Camera();
