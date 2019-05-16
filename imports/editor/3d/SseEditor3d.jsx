@@ -597,12 +597,12 @@ export default class SseEditor3d extends React.Component {
         var texAspect = bgWidth / bgHeight;
         var relAspect = aspect / texAspect;
     
-        bgTexture.repeat = new THREE.Vector2( Math.max(relAspect, 1), Math.max(1/relAspect,1) ); 
-        bgTexture.offset = new THREE.Vector2( -Math.max(relAspect-1, 0)/2, -Math.max(1/relAspect-1, 0)/2 ); 
+        this.bgTexture.repeat = new THREE.Vector2( Math.max(relAspect, 1), Math.max(1/relAspect,1) ); 
+        this.bgTexture.offset = new THREE.Vector2( -Math.max(relAspect-1, 0)/2, -Math.max(1/relAspect-1, 0)/2 ); 
     
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.aspect = aspect;
-        camera.updateProjectionMatrix();
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.camera.aspect = aspect;
+        this.camera.updateProjectionMatrix();
       }
 
     init() {
@@ -635,8 +635,8 @@ export default class SseEditor3d extends React.Component {
         // scene.background = new THREE.Color(0x111111);
         // scene.background = this.makeTextWaterMark(Meteor.user().username, 0, 0);
 
-        loader = new THREE.TextureLoader();
-        loader.setCrossOrigin("");
+        this.loader = new THREE.TextureLoader();
+        this.loader.setCrossOrigin("");
 
         this.bgTexture = loader.load("./bitmap_labeling.png",
             function ( texture ) {
