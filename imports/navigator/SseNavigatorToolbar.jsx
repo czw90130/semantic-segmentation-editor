@@ -9,7 +9,7 @@ import url from "url";
 import SseBranding from "../common/SseBranding";
 import AccountsUIWrapper from "../common/AccountsUIWrapper";
 import SseNavigatorMenu from "./SseNavigatorMenu";
-import configurationFile from "./config";
+// import configurationFile from "./config";
 
 export default class SseNavigatorToolbar extends React.Component {
 

@@ -7,7 +7,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import SseEditorApp from "../imports/editor/SseEditorApp";
 import SseNavigatorApp from "../imports/navigator/SseNavigatorApp";
 import SseAllAnnotated from "../imports/navigator/SseAllAnnotated";
-import configurationFile from "./config";
+// import configurationFile from "./config";
 
 const browserHistory = createBrowserHistory();
 var basepath = "/browse/0/20/"
