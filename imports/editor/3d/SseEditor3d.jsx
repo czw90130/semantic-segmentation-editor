@@ -1364,6 +1364,8 @@ export default class SseEditor3d extends React.Component {
             this._orientationRaycasting();
         else
             this._raycasting();
+        this.renderer.clear();
+        this.renderer.render( this.backgroundScene, this.backgroundCamera );
         this.renderer.render(this.scene, this.camera);
         if (this.colorIsDirty) {
             this.paintScene();
