@@ -623,8 +623,8 @@ export default class SseEditor3d extends React.Component {
 
         //create image
         this.bitmap = document.createElement('canvas');
-        this.bitmap.width = 12*Meteor.user().username.length;
-        this.bitmap.height = 26;
+        this.bitmap.width = 16*Meteor.user().username.length;
+        this.bitmap.height = 32;
         this.bitmap.style.width = this.bitmap.width + 'px';
         this.bitmap.style.height = this.bitmap.height + 'px';
         // this.bitmap.getContext('2d')
@@ -635,12 +635,12 @@ export default class SseEditor3d extends React.Component {
 
         ctx.beginPath();
         ctx.rect(0, 0, this.bitmap.width, this.bitmap.height);
-        ctx.fillStyle = 'rgb(0x11,0x11,0x11)';
+        ctx.fillStyle = '#111111';
         ctx.fill();
 
         ctx.fillStyle = 'black';
         ctx.fillText(Meteor.user().username, 0, 20);
-        ctx.strokeStyle = 'rgb(0xDD,0xDD,0xDD)';
+        ctx.strokeStyle = 'white';
         ctx.strokeText(Meteor.user().username, 0, 20);
 
         // canvas contents will be used for a texture
