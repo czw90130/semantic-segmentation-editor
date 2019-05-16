@@ -623,11 +623,11 @@ export default class SseEditor3d extends React.Component {
 
         //create image
         this.bitmap = document.createElement('canvas');
-        if(Meteor.user().username.length<10)
+        if(Meteor.user().username.length<8)
         {
             this.bitmap.width = 64
         }
-        else if(Meteor.user().username.length<20)
+        else if(Meteor.user().username.length<12)
         {
             this.bitmap.width = 128
         }
@@ -657,7 +657,7 @@ export default class SseEditor3d extends React.Component {
         this.texture.needsUpdate = true;
         this.texture.wrapS = this.texture.wrapT = THREE.RepeatWrapping;
         this.texture.offset.set( 0, 0 );
-        let wrep = 25 - Meteor.user().username.length/2
+        let wrep = 25 - Meteor.user().username.length
         if(wrep<5)
         {
             wrep = 5
