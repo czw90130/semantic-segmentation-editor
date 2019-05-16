@@ -591,20 +591,6 @@ export default class SseEditor3d extends React.Component {
         
     }
 
-    bgresize() {
-    
-        var aspect = window.innerWidth / window.innerHeight;
-        var texAspect = bgWidth / bgHeight;
-        var relAspect = aspect / texAspect;
-    
-        this.bgTexture.repeat = new THREE.Vector2( Math.max(relAspect, 1), Math.max(1/relAspect,1) ); 
-        this.bgTexture.offset = new THREE.Vector2( -Math.max(relAspect-1, 0)/2, -Math.max(1/relAspect-1, 0)/2 ); 
-    
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.camera.aspect = aspect;
-        this.camera.updateProjectionMatrix();
-      }
-
     init() {
         
         this.sendMsg("bottom-right-label", {message: "Downloading PLY File..."});
@@ -638,16 +624,25 @@ export default class SseEditor3d extends React.Component {
         this.textureLoader = new THREE.TextureLoader();
         this.textureLoader.setCrossOrigin("");
 
-        this.bgTexture = this.textureLoader.load("./bitmap_labeling.png",
-            function ( texture ) {
-                var img = texture.image;
-                bgWidth= img.width;
-                bgHeight = img.height;
-                this.bgresize();
-            } );
-        scene.background = this.bgTexture;
-        this.bgTexture.wrapS = THREE.MirroredRepeatWrapping;
-        this.bgTexture.wrapT = THREE.MirroredRepeatWrapping;
+
+        this.textureLoader.load("./bitmap_labeling.png", function( texture ) 
+        {
+            this.backgroundMesh = new THREE.Mesh(
+                new THREE.PlaneGeometry(2, 2, 0),
+                new THREE.MeshBasicMaterial({
+                    map: texture
+                })
+            );
+
+            this.backgroundMesh.material.depthTest = false;
+            this.backgroundMesh.material.depthWrite = false;
+
+
+            this.backgroundScene = new THREE.Scene();
+            this.backgroundCamera = new THREE.Camera();
+            this.backgroundScene.add( this.backgroundCamera );
+            this.backgroundScene.add( this.backgroundMesh );
+        });
 
         // this.isPersCam = true
         // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
@@ -663,6 +658,9 @@ export default class SseEditor3d extends React.Component {
 
         const renderer = this.renderer = new THREE.WebGLRenderer(rendererAttrs);
         renderer.autoClear = false;
+
+        renderer.clear();
+	    renderer.render( this.backgroundScene, this.backgroundCamera );
 
         renderer.setPixelRatio(window.devicePixelRatio);
         $(renderer.domElement).addClass("absoluteTopLeftZeroW100H100");
