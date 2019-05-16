@@ -635,10 +635,10 @@ export default class SseEditor3d extends React.Component {
         // scene.background = new THREE.Color(0x111111);
         // scene.background = this.makeTextWaterMark(Meteor.user().username, 0, 0);
 
-        this.loader = new THREE.TextureLoader();
-        this.loader.setCrossOrigin("");
+        this.textureLoader = new THREE.TextureLoader();
+        this.textureLoader.setCrossOrigin("");
 
-        this.bgTexture = loader.load("./bitmap_labeling.png",
+        this.bgTexture = this.textureLoader.load("./bitmap_labeling.png",
             function ( texture ) {
                 var img = texture.image;
                 bgWidth= img.width;
