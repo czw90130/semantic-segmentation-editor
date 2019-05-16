@@ -10,7 +10,7 @@ const browserHistory = createBrowserHistory();
 var basepath = "/browse/0/20/"
 if(Meteor.userId())
 {
-    basepath += Meteor.userId()
+    basepath += '%2F' + Meteor.userId()
 }
 export const renderRoutes = () => (
     <Router history={browserHistory}>
