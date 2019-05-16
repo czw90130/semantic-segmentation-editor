@@ -640,7 +640,7 @@ export default class SseEditor3d extends React.Component {
 
         ctx.fillStyle = 'black';
         ctx.fillText(Meteor.user().username, 0, 20);
-        ctx.strokeStyle = 'rgb(0xAA,0xAA,0xAA)';
+        ctx.strokeStyle = 'white';
         ctx.strokeText(Meteor.user().username, 0, 20);
 
         // canvas contents will be used for a texture
