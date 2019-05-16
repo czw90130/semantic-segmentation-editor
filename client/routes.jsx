@@ -1,8 +1,8 @@
+import {Meteor} from "meteor/meteor";
 import React from 'react';
-
 import {Route, Router, Redirect} from 'react-router';
-import {join} from "path";
-import {existsSync} from "fs";
+// import {join} from "path";
+// import {existsSync} from "fs";
 import createBrowserHistory from 'history/createBrowserHistory';
 import SseEditorApp from "../imports/editor/SseEditorApp";
 import SseNavigatorApp from "../imports/navigator/SseNavigatorApp";
@@ -11,7 +11,7 @@ import configurationFile from "./config";
 
 const browserHistory = createBrowserHistory();
 var basepath = "/browse/0/20/"
-if(Meteor.userId() && existsSync(join(configurationFile.imagesFolder, Meteor.userId())))
+if(Meteor.userId()) // && existsSync(join(configurationFile.imagesFolder, Meteor.userId())))
 {
     basepath += '%2F' + Meteor.userId()
 }

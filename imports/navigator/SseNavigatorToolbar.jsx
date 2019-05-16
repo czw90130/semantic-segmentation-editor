@@ -1,9 +1,10 @@
+import {Meteor} from "meteor/meteor";
 import React from "react";
 import {Button, Toolbar} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {ChevronRight} from "mdi-material-ui";
-import {join} from "path";
-import {existsSync} from "fs";
+// import {join} from "path";
+// import {existsSync} from "fs";
 import url from "url";
 import SseBranding from "../common/SseBranding";
 import AccountsUIWrapper from "../common/AccountsUIWrapper";
@@ -24,7 +25,7 @@ export default class SseNavigatorToolbar extends React.Component {
     updateBreadCrumb()
     {
         var basepath = "/browse/0/20/"
-        if(Meteor.userId() && existsSync(join(configurationFile.imagesFolder, Meteor.userId())))
+        if(Meteor.userId()) // && existsSync(join(configurationFile.imagesFolder, Meteor.userId())))
         {
             basepath += '%2F' + Meteor.userId()
         }
