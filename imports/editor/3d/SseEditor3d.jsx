@@ -591,6 +591,20 @@ export default class SseEditor3d extends React.Component {
         
     }
 
+    bgresize() {
+    
+        var aspect = window.innerWidth / window.innerHeight;
+        var texAspect = bgWidth / bgHeight;
+        var relAspect = aspect / texAspect;
+    
+        bgTexture.repeat = new THREE.Vector2( Math.max(relAspect, 1), Math.max(1/relAspect,1) ); 
+        bgTexture.offset = new THREE.Vector2( -Math.max(relAspect-1, 0)/2, -Math.max(1/relAspect-1, 0)/2 ); 
+    
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = aspect;
+        camera.updateProjectionMatrix();
+      }
+
     init() {
         
         this.sendMsg("bottom-right-label", {message: "Downloading PLY File..."});
@@ -620,8 +634,17 @@ export default class SseEditor3d extends React.Component {
 
         // scene.background = new THREE.Color(0x111111);
         // scene.background = this.makeTextWaterMark(Meteor.user().username, 0, 0);
-        var texture = new THREE.TextureLoader().load( "./bitmap_labeling.png" );
-        scene.background = texture
+
+        bgTexture = loader.load("./bitmap_labeling.png",
+            function ( texture ) {
+                var img = texture.image;
+                bgWidth= img.width;
+                bgHeight = img.height;
+                this.bgresize();
+            } );
+        scene.background = bgTexture;
+        bgTexture.wrapS = THREE.MirroredRepeatWrapping;
+        bgTexture.wrapT = THREE.MirroredRepeatWrapping;
 
         // this.isPersCam = true
         // this.orthCamera =  new THREE.OrthographicCamera( window.innerWidth/-2, window.innerWidth/2, window.innerHeight/2, window.innerHeight/-2, -1000, 10000 );
@@ -636,6 +659,8 @@ export default class SseEditor3d extends React.Component {
         };
 
         const renderer = this.renderer = new THREE.WebGLRenderer(rendererAttrs);
+        renderer.autoClear = false;
+
         renderer.setPixelRatio(window.devicePixelRatio);
         $(renderer.domElement).addClass("absoluteTopLeftZeroW100H100");
 
