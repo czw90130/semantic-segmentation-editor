@@ -96,13 +96,13 @@ class SseNavigatorApp extends React.Component
         {
             return <div>{this.state.data.error}</div>
         }
-        if(null == Meteor.userId())
+        if(null == Meteor.userId() || -1 == document.URL.indexOf(notautorized))
         {
             return (
                 <MuiThemeProvider theme={new SseTheme().theme}>
                     <div className="w100">
                         <SseNavigatorToolbar history={this.props.history}/>
-                        <h1> Please Login!</h1>
+                        <h1>Not Autorized!</h1>
     
                     </div>
                 </MuiThemeProvider>

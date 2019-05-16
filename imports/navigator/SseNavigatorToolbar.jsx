@@ -2,11 +2,13 @@ import React from "react";
 import {Button, Toolbar} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {ChevronRight} from "mdi-material-ui";
+import {join} from "path";
+import {existsSync} from "fs";
 import url from "url";
 import SseBranding from "../common/SseBranding";
 import AccountsUIWrapper from "../common/AccountsUIWrapper";
 import SseNavigatorMenu from "./SseNavigatorMenu";
-
+import configurationFile from "./config";
 
 export default class SseNavigatorToolbar extends React.Component {
 
@@ -19,13 +21,24 @@ export default class SseNavigatorToolbar extends React.Component {
         this.updateBreadCrumb();
     }
 
-    updateBreadCrumb() {
+    updateBreadCrumb()
+    {
+        var basepath = "/browse/0/20/"
+        if(Meteor.userId() && existsSync(join(configurationFile.imagesFolder, Meteor.userId())))
+        {
+            basepath += '%2F' + Meteor.userId()
+        }
+        else
+        {
+            basepath += '%2Fnotautorized'
+        }
+
         const du = url.parse(document.URL);
 
         {
             let bd = du.pathname.replace(/\/browse\/.*\/.*\//, "").split("%2F");
 
-            let res = [{name: "Home", browseUrl: "/browse/0/20/"}];
+            let res = [{name: "Home", browseUrl: basepath}];
             let data;
 
             bd.forEach(itm => {
