@@ -624,12 +624,15 @@ export default class SseEditor3d extends React.Component {
         this.textureLoader = new THREE.TextureLoader();
         this.textureLoader.setCrossOrigin("");
 
-
+        this.backgroundScene = new THREE.Scene();
+        this.backgroundCamera = new THREE.Camera();
+        this.backgroundMesh = null
         this.textureLoader.load("./bitmap_labeling.png", function( texture ) 
         {
             this.backgroundMesh = new THREE.Mesh(
                 new THREE.PlaneGeometry(2, 2, 0),
-                new THREE.MeshBasicMaterial({
+                new THREE.MeshBasicMaterial(
+                {
                     map: texture
                 })
             );
@@ -638,8 +641,6 @@ export default class SseEditor3d extends React.Component {
             this.backgroundMesh.material.depthWrite = false;
 
 
-            this.backgroundScene = new THREE.Scene();
-            this.backgroundCamera = new THREE.Camera();
             this.backgroundScene.add( this.backgroundCamera );
             this.backgroundScene.add( this.backgroundMesh );
         });
