@@ -623,8 +623,15 @@ export default class SseEditor3d extends React.Component {
 
         this.wmtext = 'cats'
         //create image
-        this.bitmap = createRetinaCanvas(100, 100);
+        this.bitmap = document.createElement('canvas');
+        this.bitmap.width = 100;
+        this.bitmap.height = 100;
+        this.bitmap.style.width = can.width + 'px';
+        this.bitmap.style.height = can.height + 'px';
+        // this.bitmap.getContext('2d')
+
         var ctx = this.bitmap.getContext('2d', {antialias: false});
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.font = 'Bold 20px Arial';
 
         ctx.beginPath();
