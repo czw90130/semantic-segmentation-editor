@@ -624,8 +624,8 @@ export default class SseEditor3d extends React.Component {
         this.wmtext = 'cats'
         //create image
         this.bitmap = document.createElement('canvas');
-        this.bitmap.width = 100;
-        this.bitmap.height = 100;
+        this.bitmap.width = 128;
+        this.bitmap.height = 128;
         this.bitmap.style.width = this.bitmap.width + 'px';
         this.bitmap.style.height = this.bitmap.height + 'px';
         // this.bitmap.getContext('2d')
@@ -635,7 +635,7 @@ export default class SseEditor3d extends React.Component {
         ctx.font = 'Bold 20px Arial';
 
         ctx.beginPath();
-        ctx.rect(0, 0, 100, 100);
+        ctx.rect(0, 0, 128, 128);
         ctx.fillStyle = 'red';
         ctx.fill();
 
@@ -652,7 +652,7 @@ export default class SseEditor3d extends React.Component {
         this.backgroundCamera = new THREE.Camera();
         
         this.backgroundMesh = new THREE.Mesh(
-            new THREE.PlaneGeometry(100, 100, 4, 4),
+            new THREE.PlaneGeometry(50, 50, 4, 4),
             new THREE.MeshBasicMaterial(
             {
                 // color: 0x777777
