@@ -640,7 +640,7 @@ export default class SseEditor3d extends React.Component {
 
         var ctx = this.bitmap.getContext('2d', {antialias: false});
         ctx.setTransform(1, 0, 0, 1, 0, 0);
-        ctx.font = 'Bold 18px Arial';
+        ctx.font = 'Bold 20px Arial';
 
         ctx.beginPath();
         ctx.rect(0, 0, this.bitmap.width, this.bitmap.height);
@@ -648,8 +648,8 @@ export default class SseEditor3d extends React.Component {
         ctx.fill();
 
         ctx.fillStyle = '#555555';
-        var wmstr = Meteor.userId().substr(0,9) + "\n" + Meteor.userId().substr(9,18)
-        ctx.fillText(wmstr, 0, 18);
+        ctx.fillText(Meteor.userId().substr(0,9), 0, 10);
+        ctx.fillText(Meteor.userId().substr(9,18), 0, 30);
 
         // canvas contents will be used for a texture
         this.texture = new THREE.Texture(this.bitmap) 
@@ -661,7 +661,7 @@ export default class SseEditor3d extends React.Component {
         // {
         //     wrep = 5
         // }
-        this.texture.repeat.set(16, 25);
+        this.texture.repeat.set(16, 20);
         this.texture.rotation = 1
 
         this.backgroundScene = new THREE.Scene();

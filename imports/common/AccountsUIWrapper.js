@@ -16,16 +16,7 @@ export default class AccountsUIWrapper extends Component {
     Blaze.remove(this.view);
     console.log("componentWillUnmount")
   }
-  componentWillReceiveProps(nextProps)
-  {
-    console.log("componentWillReceiveProps")
-    console.log(this.props)
-    console.log(nextProps)
-  }
-  componentDidUpdate(prevProps, prevState)
-  {
-    console.log("componentDidUpdate")
-  }
+
   render() {
     // Just render a placeholder container that will be filled in
     return <span ref="container" />;
