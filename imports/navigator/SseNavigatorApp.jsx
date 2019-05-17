@@ -40,9 +40,11 @@ class SseNavigatorApp extends React.Component
         Meteor.call("images", params.path, fi, ti, (err, res) => 
         {
             this.setState({data: res});
+            console.log(res)
+            console.log(res.err)
             if (res && typeof(res.err) == "undefined") 
             {
-
+                
                 let msg = "";
                 // console.log("images:")
                 // for (var i=0; i<res.images.length; i++)
