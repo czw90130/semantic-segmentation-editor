@@ -42,7 +42,7 @@ class SseNavigatorApp extends React.Component
             this.setState({data: res});
             console.log(res)
             console.log(res.err)
-            if (res && typeof(res.err) == "undefined") 
+            if (res && typeof(res.error) == "undefined") 
             {
                 
                 let msg = "";
@@ -70,8 +70,8 @@ class SseNavigatorApp extends React.Component
             }
             else
             {
-                console.log("err");
-                console.log(err);
+                console.log("error");
+                console.log(error);
                 var protocol = window.location.protocol;
                 var host = window.location.host;
                 var port = window.location.port;
