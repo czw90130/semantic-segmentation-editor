@@ -49,7 +49,7 @@ export const renderRoutes = function()
             <Route exact path="/edit" render={()=>(<Redirect to={basepath}/>)}/>
             <Route path="/browse/:fromIndex/:pageLength/:path?" component={SseNavigatorApp}/>
             <Route path="/annotated" component={SseAllAnnotated}/>
-            <Route exact path="/notautorized" render={()=>(<Redirect to="/browse/0/20/%2Fnotautorized" />)}/>
+            <Route path="/notautorized" render={()=>(<Redirect to="/browse/0/20/%2Fnotautorized" />)}/>
         </div>
     </Router>
 );
