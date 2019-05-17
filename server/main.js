@@ -66,7 +66,7 @@ Meteor.methods({
             SseProps.upsert({key: "tags"}, {key: "tags", value: Array.from(tags)});
         },
     */
-    'isAutorized'(folder)
+    async 'isAutorized'(folder)
     {
         if(!folder)
         {

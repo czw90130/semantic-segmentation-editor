@@ -11,7 +11,7 @@ import SseAllAnnotated from "../imports/navigator/SseAllAnnotated";
 
 const browserHistory = createBrowserHistory();
 var basepath = "/browse/0/20/"
-const autorized = await Meteor.callPromise("isAutorized", Meteor.userId());
+const autorized = await (Meteor.callPromise("isAutorized", Meteor.userId()));
 if(autorized)
 {
     basepath += '%2F' + Meteor.userId()
