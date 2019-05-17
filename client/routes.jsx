@@ -11,54 +11,35 @@ import SseAllAnnotated from "../imports/navigator/SseAllAnnotated";
 
 const browserHistory = createBrowserHistory();
 var basepath = "/browse/0/20/";
-var iscalled = false;
 
-Meteor.call("isAutorized", Meteor.userId(), (err, res) => 
+console.log("outerbasepath1")
+console.log(basepath)
+export const renderRoutes = function()
 {
-    if (res)
+    Meteor.call("isAutorized", Meteor.userId(), (err, res) => 
     {
-        console.log("res.autorstate")
-        console.log(res.autorstate)
-        if(res.autorstate)
+        if (res)
         {
-            basepath += '%2F' + Meteor.userId()
-            console.log("innerbasepath")
-            console.log(basepath)
+            console.log("res.autorstate")
+            console.log(res.autorstate)
+            if(res.autorstate)
+            {
+                basepath += '%2F' + Meteor.userId()
+                console.log("innerbasepath")
+                console.log(basepath)
+            }
+            else
+            {
+                basepath += '%2Fnotautorized'
+            }
         }
         else
         {
             basepath += '%2Fnotautorized'
         }
-    }
-    else
-    {
-        basepath += '%2Fnotautorized'
-    }
-    iscalled = true;
-});
-
-function sleep(ms) 
-{
-    return new Promise(resolve => 
-        setTimeout(resolve, ms)
-    )
-}
-console.log("iscalled")
-console.log(iscalled)
-for(var i=0; i<1000; i++)
-{
-    if(iscalled)
-    {
-        break;
-    }
-    sleep(1);
-}
-console.log("outerbasepath1")
-console.log(basepath)
-console.log(iscalled)
-
-renderRoutes() 
-{
+    });
+    console.log("outerbasepath1")
+    console.log(basepath)
     return(
     <Router history={browserHistory}>
         <div>
@@ -74,4 +55,3 @@ renderRoutes()
 }
 console.log("outerbasepath2")
 console.log(basepath)
-console.log(iscalled)
