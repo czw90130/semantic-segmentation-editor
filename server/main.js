@@ -75,8 +75,8 @@ Meteor.methods({
         const folderSlash = folder ? decodeURIComponent(folder) + "/" : "/";
         const userfloder = join(config.imagesFolder, (folderSlash ? folderSlash : ""));
         const existing = existsSync(userfloder);
-        // const res = {autorstate:existing}
-        return existing
+        const res = {autorstate:existing}
+        return res
     },
 
     'images'(folder, pageIndex, pageLength) 
