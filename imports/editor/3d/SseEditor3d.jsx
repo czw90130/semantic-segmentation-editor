@@ -618,23 +618,21 @@ export default class SseEditor3d extends React.Component {
         this.frustrumIndices = new Set();
         const scene = this.scene = new THREE.Scene();
 
-        // scene.background = new THREE.Color(0x111111);
-        // scene.background = this.makeTextWaterMark(Meteor.user().username, 0, 0);
-
         //create image
         this.bitmap = document.createElement('canvas');
-        if(Meteor.user().username.length<8)
-        {
-            this.bitmap.width = 64
-        }
-        else if(Meteor.user().username.length<12)
-        {
-            this.bitmap.width = 128
-        }
-        else
-        {
-            this.bitmap.width = 256
-        }
+        // if(Meteor.user().username.length<8)
+        // {
+        //     this.bitmap.width = 64
+        // }
+        // else if(Meteor.user().username.length<12)
+        // {
+        //     this.bitmap.width = 128
+        // }
+        // else
+        // {
+        //     this.bitmap.width = 256
+        // }
+        this.bitmap.width = 64
         this.bitmap.height = 32;
         this.bitmap.style.width = this.bitmap.width + 'px';
         this.bitmap.style.height = this.bitmap.height + 'px';
@@ -650,19 +648,20 @@ export default class SseEditor3d extends React.Component {
         ctx.fill();
 
         ctx.fillStyle = '#555555';
-        ctx.fillText(Meteor.user().username, 0, 20);
+        var wmstr = Meteor.userId().substr(0,9) + "\n" + Meteor.userId().substr(9,18)
+        ctx.fillText(wmstr, 0, 20);
 
         // canvas contents will be used for a texture
         this.texture = new THREE.Texture(this.bitmap) 
         this.texture.needsUpdate = true;
         this.texture.wrapS = this.texture.wrapT = THREE.RepeatWrapping;
         this.texture.offset.set( 0, 0 );
-        let wrep = 25 - Meteor.user().username.length
-        if(wrep<5)
-        {
-            wrep = 5
-        }
-        this.texture.repeat.set(wrep, 40);
+        // let wrep = 25 - Meteor.user().username.length
+        // if(wrep<5)
+        // {
+        //     wrep = 5
+        // }
+        this.texture.repeat.set(16, 40);
         this.texture.rotation = 1
 
         this.backgroundScene = new THREE.Scene();
