@@ -661,7 +661,7 @@ export default class SseEditor3d extends React.Component {
         // {
         //     wrep = 5
         // }
-        this.texture.repeat.set(16, 40);
+        this.texture.repeat.set(16, 25);
         this.texture.rotation = 1
 
         this.backgroundScene = new THREE.Scene();

@@ -22,6 +22,10 @@ export default class AccountsUIWrapper extends Component {
     console.log(this.props)
     console.log(nextProps)
   }
+  componentDidUpdate()
+  {
+    console.log("componentDidUpdate")
+  }
   render() {
     // Just render a placeholder container that will be filled in
     return <span ref="container" />;

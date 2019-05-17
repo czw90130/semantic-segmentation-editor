@@ -19,8 +19,6 @@ else
 }
 
 
-console.log("outerbasepath1")
-console.log(basepath)
 export const renderRoutes = function()
 {
     return(
@@ -37,5 +35,3 @@ export const renderRoutes = function()
     </Router>
 );
 }
-console.log("outerbasepath2")
-console.log(basepath)
