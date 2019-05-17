@@ -39,7 +39,11 @@ class SseNavigatorApp extends React.Component
         }
         Meteor.call("images", params.path, fi, ti, (err, res) => 
         {
+            console.log("res0");
+            console.log(res);
             this.setState({data: res});
+            console.log("res1");
+            console.log(res);
             if (res) 
             {
 
@@ -68,6 +72,7 @@ class SseNavigatorApp extends React.Component
             }
             else
             {
+                console.log("err");
                 console.log(err);
                 var protocol = window.location.protocol;
                 var host = window.location.host;
