@@ -68,6 +68,10 @@ Meteor.methods({
     */
     'isAutorized'(folder)
     {
+        if(!folder)
+        {
+            return false
+        }
         const folderSlash = folder ? decodeURIComponent(folder) + "/" : "/";
         const userfloder = join(config.imagesFolder, (folderSlash ? folderSlash : ""));
         const existing = existsSync(userfloder);

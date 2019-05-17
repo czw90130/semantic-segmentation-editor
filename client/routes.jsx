@@ -11,26 +11,20 @@ import SseAllAnnotated from "../imports/navigator/SseAllAnnotated";
 
 const browserHistory = createBrowserHistory();
 var basepath = "/browse/0/20/"
-if(Meteor.userId()) // && existsSync(join(configurationFile.imagesFolder, Meteor.userId())))
+const autorized = await Meteor.callPromise("isAutorized", Meteor.userId());
+if(autorized)
 {
-    var autorized = await Meteor.callPromise("isAutorized", Meteor.userId());
-    if(autorized)
-    {
-        basepath += '%2F' + Meteor.userId()
-        console.log("innerbasepath")
-        console.log(basepath)
-    }
-    else
-    {
-        basepath += '%2Fnotautorized'
-    }
-    console.log("test autorized")
-    console.log(autorized)
+    basepath += '%2F' + Meteor.userId()
+    console.log("innerbasepath")
+    console.log(basepath)
 }
 else
 {
     basepath += '%2Fnotautorized'
 }
+console.log("test autorized")
+console.log(autorized)
+
 console.log("outerbasepath1")
 console.log(basepath)
 export const renderRoutes = () => (
