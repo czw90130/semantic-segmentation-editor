@@ -11,7 +11,10 @@ import SseAllAnnotated from "../imports/navigator/SseAllAnnotated";
 
 const browserHistory = createBrowserHistory();
 var basepath = "/browse/0/20/"
-const autorized = Meteor.callPromise("isAutorized", Meteor.userId());
+var autorized = false;
+Meteor.callPromise("isAutorized", Meteor.userId()).then(function(result){autorized=result;})
+console.log("test autorized1")
+console.log(autorized)
 if(autorized)
 {
     basepath += '%2F' + Meteor.userId()
@@ -22,7 +25,7 @@ else
 {
     basepath += '%2Fnotautorized'
 }
-console.log("test autorized")
+console.log("test autorized2")
 console.log(autorized)
 
 console.log("outerbasepath1")
