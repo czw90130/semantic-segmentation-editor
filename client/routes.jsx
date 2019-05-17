@@ -56,7 +56,10 @@ for(var i=0; i<1000; i++)
 console.log("outerbasepath1")
 console.log(basepath)
 console.log(iscalled)
-export const renderRoutes = () => (
+
+renderRoutes() 
+{
+    return(
     <Router history={browserHistory}>
         <div>
             <Route exact path="/" render={()=>(<Redirect to={basepath} />)}/>
@@ -68,6 +71,7 @@ export const renderRoutes = () => (
         </div>
     </Router>
 );
+}
 console.log("outerbasepath2")
 console.log(basepath)
 console.log(iscalled)
