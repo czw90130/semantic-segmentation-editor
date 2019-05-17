@@ -69,6 +69,10 @@ class SseNavigatorApp extends React.Component
             else
             {
                 console.log(err);
+                var protocol = window.location.protocol;
+                var host = window.location.host;
+                var port = window.location.port;
+                this.props.history.push(protocol + "//" + host + ":" + port + "/0/20/%Fnotautorized");
             }
         });
     }

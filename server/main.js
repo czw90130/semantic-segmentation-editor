@@ -126,7 +126,7 @@ Meteor.methods({
             return {error: leaf + " is a file but should be a folder. Check the documentation and your settings.json"};
         }
         if (!existing) {
-            return {error: leaf + " does not exists. If your account is not autorized, contact the administrator or goto <a href=\"/browse/0/20/%2Fnotautorized\">Demo Page</a>"};
+            return {error: leaf + " does not exists. If your account is not autorized, contact the administrator or goto /browse/0/20/%2Fnotautorized"};
         }
 
         const dirs = getDirectories(leaf);
