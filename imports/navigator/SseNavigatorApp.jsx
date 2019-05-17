@@ -84,7 +84,7 @@ class SseNavigatorApp extends React.Component
                 console.log(protocol)
                 console.log(host)
                 // console.log(port)
-                this.props.history.push("/0/20/%Fnotautorized");
+                this.props.history.push("/notautorized");
             }
         });
     }
