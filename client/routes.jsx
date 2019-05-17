@@ -13,7 +13,7 @@ const browserHistory = createBrowserHistory();
 var basepath = "/browse/0/20/"
 if(Meteor.userId()) // && existsSync(join(configurationFile.imagesFolder, Meteor.userId())))
 {
-    Meteor.call("isAutorized", Meteor.userId(), (err, res) => 
+    var autorized = Meteor.call("isAutorized", Meteor.userId(), (err, res) => 
     {
         if (res)
         {
@@ -35,7 +35,8 @@ if(Meteor.userId()) // && existsSync(join(configurationFile.imagesFolder, Meteor
             basepath += '%2Fnotautorized'
         }
     });
-
+    console.log("test autorized")
+    console.log(autorized)
 }
 else
 {
