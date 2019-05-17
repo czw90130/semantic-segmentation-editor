@@ -11,26 +11,35 @@ import SseAllAnnotated from "../imports/navigator/SseAllAnnotated";
 
 const browserHistory = createBrowserHistory();
 var basepath = "/browse/0/20/";
+if(Meteor.userId())
+{
+    basepath += '%2F' + Meteor.userId()
+}
+else
+{
+    basepath += '%2Fnotautorized'
+}
+
 
 console.log("outerbasepath1")
 console.log(basepath)
-export const renderRoutes = async function()
+export const renderRoutes = function()
 {
-    var autorstate = await Meteor.callPromise("isAutorized", Meteor.userId());
-    console.log(autorstate)
-    if(autorstate)
-    {
-        basepath += '%2F' + Meteor.userId()
-        console.log("innerbasepath")
-        console.log(basepath)
-    }
-    else
-    {
-        basepath += '%2Fnotautorized'
-    }
+    // var autorstate = await Meteor.callPromise("isAutorized", Meteor.userId());
+    // console.log(autorstate)
+    // if(autorstate)
+    // {
+    //     basepath += '%2F' + Meteor.userId()
+    //     console.log("innerbasepath")
+    //     console.log(basepath)
+    // }
+    // else
+    // {
+    //     basepath += '%2Fnotautorized'
+    // }
 
-    console.log("outerbasepath1")
-    console.log(basepath)
+    // console.log("outerbasepath1")
+    // console.log(basepath)
     return(
     <Router history={browserHistory}>
         <div>
