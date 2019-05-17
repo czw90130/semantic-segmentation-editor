@@ -40,8 +40,7 @@ class SseNavigatorApp extends React.Component
         Meteor.call("images", params.path, fi, ti, (err, res) => 
         {
             this.setState({data: res});
-            console.log(res)
-            console.log(res.err)
+
             if (res && typeof(res.error) == "undefined") 
             {
                 
@@ -71,10 +70,20 @@ class SseNavigatorApp extends React.Component
             else
             {
                 console.log("error");
-                console.log(error);
+                if(typeof(res.error) == "undefined")
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    console.log(res.error);
+                }
                 var protocol = window.location.protocol;
                 var host = window.location.host;
                 var port = window.location.port;
+                console.log(protocol)
+                console.log(host)
+                console.log(port)
                 this.props.history.push(protocol + "//" + host + ":" + port + "/0/20/%Fnotautorized");
             }
         });
