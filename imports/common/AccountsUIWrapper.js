@@ -22,7 +22,7 @@ export default class AccountsUIWrapper extends Component {
     console.log(this.props)
     console.log(nextProps)
   }
-  componentDidUpdate()
+  componentDidUpdate(prevProps, prevState)
   {
     console.log("componentDidUpdate")
   }
