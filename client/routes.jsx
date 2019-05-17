@@ -14,7 +14,7 @@ var basepath = "/browse/0/20/";
 
 console.log("outerbasepath1")
 console.log(basepath)
-export const renderRoutes = function()
+export const renderRoutes = async function()
 {
     var autorstate = await Meteor.callPromise("isAutorized", Meteor.userId());
     console.log(autorstate)
