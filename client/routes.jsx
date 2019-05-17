@@ -16,28 +16,19 @@ console.log("outerbasepath1")
 console.log(basepath)
 export const renderRoutes = function()
 {
-    Meteor.call("isAutorized", Meteor.userId(), (err, res) => 
+    var autorstate = await Meteor.callPromise("isAutorized", Meteor.userId());
+    console.log(autorstate)
+    if(autorstate)
     {
-        if (res)
-        {
-            console.log("res.autorstate")
-            console.log(res.autorstate)
-            if(res.autorstate)
-            {
-                basepath += '%2F' + Meteor.userId()
-                console.log("innerbasepath")
-                console.log(basepath)
-            }
-            else
-            {
-                basepath += '%2Fnotautorized'
-            }
-        }
-        else
-        {
-            basepath += '%2Fnotautorized'
-        }
-    });
+        basepath += '%2F' + Meteor.userId()
+        console.log("innerbasepath")
+        console.log(basepath)
+    }
+    else
+    {
+        basepath += '%2Fnotautorized'
+    }
+
     console.log("outerbasepath1")
     console.log(basepath)
     return(
