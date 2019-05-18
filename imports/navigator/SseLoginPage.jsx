@@ -94,7 +94,7 @@ export default withTracker((props) => {
     return {
       currentUser,
     };
-})(SseNavigatorApp);
+})(SseLoginPage);
 
 // export default SseLoginPageContainer = createContainer(({params}) => {
 //     const currentUser = Meteor.user();
