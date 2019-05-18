@@ -16,7 +16,7 @@ export default class SseNavigatorToolbar extends React.Component {
     constructor() {
         super();
         this.state = {breadcrumb: []}
-        this.logout = this.logout.bind(this);
+        // this.logout = this.logout.bind(this);
     }
 
     logout(e)
