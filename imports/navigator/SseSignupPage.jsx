@@ -4,9 +4,9 @@ import React from 'react';
 
 export default class SseSignupPage extends React.Component 
 {
-  constructor(props)
+  constructor()
   {
-    super(props);
+    super();
     this.state = {
       error: ''
     };

@@ -4,9 +4,9 @@ import { createContainer } from 'meteor/react-meteor-data'
 
 
 export default class SseLoginPage extends React.Component {
-    constructor(props)
+    constructor()
     {
-        super(props);
+        super();
         this.state = 
         {
             error: ''
