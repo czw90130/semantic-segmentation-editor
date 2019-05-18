@@ -33,8 +33,8 @@ export const renderRoutes = function()
             <Route path="/browse/:fromIndex/:pageLength/:path?" component={SseNavigatorApp}/>
             <Route path="/annotated" component={SseAllAnnotated}/>
             <Route path="/notautorized" render={()=>(<Redirect to="/browse/0/20/%2Fnotautorized" />)}/>
-            <Route path="/login" component={SseNavigatorApp}/>
-            <Route path="/signup" component={SseSignupPage}/>
+            <Route exact path="/login" component={SseNavigatorApp}/>
+            <Route excct path="/signup" component={SseSignupPage}/>
         </div>
     </Router>
 );

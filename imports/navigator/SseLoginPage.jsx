@@ -1,7 +1,9 @@
 import React from 'react';
 import { withHistory, Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
-
+import {withTracker} from 'meteor/react-meteor-data';
+import {MuiThemeProvider} from '@material-ui/core/styles';
+import SseTheme from "../common/SseTheme";
 
 class SseLoginPage extends React.Component {
     constructor()
@@ -40,7 +42,7 @@ class SseLoginPage extends React.Component {
     render()
     {
     const error = this.state.error;
-    return (
+    return (<MuiThemeProvider theme={new SseTheme().theme}>
         <div className="modal show">
         <div className="modal-dialog">
             <div className="modal-content">
@@ -83,6 +85,7 @@ class SseLoginPage extends React.Component {
             </div>
         </div>
         </div>
+        </MuiThemeProvider>
     );}
 }
 
