@@ -86,9 +86,16 @@ class SseLoginPage extends React.Component {
     );}
 }
 
-export default SseLoginPageContainer = createContainer(({params}) => {
+export default withTracker((props) => {
     const currentUser = Meteor.user();
     return {
       currentUser,
     };
-  }, SseLoginPage);
+})(SseNavigatorApp);
+
+// export default SseLoginPageContainer = createContainer(({params}) => {
+//     const currentUser = Meteor.user();
+//     return {
+//       currentUser,
+//     };
+//   }, SseLoginPage);
