@@ -110,8 +110,7 @@ export default class SseNavigatorToolbar extends React.Component {
                 </div>
                 <div className="hflex">
                     <li>
-                        { loggedIn ? currentUser.username : '' }
-                        <a href="#" onClick={this.logout}>Logout</a>
+                        <a href="#" onClick={this.logout}> Logout</a>
                     </li>
                 </div>
                 <SseNavigatorMenu history={this.props.history}/>
