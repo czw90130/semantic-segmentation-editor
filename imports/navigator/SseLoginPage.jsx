@@ -11,7 +11,7 @@ export default class SseLoginPage extends React.Component {
         {
             error: ''
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(e)
     {

@@ -10,7 +10,7 @@ export default class SseSignupPage extends React.Component
     this.state = {
       error: ''
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e)
