@@ -11,7 +11,6 @@ export default class SseLoginPage extends React.Component {
         {
             error: ''
         };
-        // 
     }
     componentDidMount()
     {
