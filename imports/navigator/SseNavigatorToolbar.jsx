@@ -71,6 +71,9 @@ export default class SseNavigatorToolbar extends React.Component {
 
     render() {
         let baseUrl = "";
+        let currentUser = Meteor.user();
+        let userDataAvailable = (currentUser !== undefined);
+        let loggedIn = (currentUser && userDataAvailable);
         if (document.URL.includes("/browse/"))
             baseUrl = document.URL.match(/(\/browse\/[0-9]+\/[0-9]+\/)/)[1].replace(/browse\/[0-9]+/, "browse/0");
         return (
@@ -90,7 +93,8 @@ export default class SseNavigatorToolbar extends React.Component {
                 </div>
                 <div className="hflex">
                     <li>
-                    <a href="#" onClick={this.logout}>Logout</a>
+                        { loggedIn ? currentUser.username : '' }
+                        <a href="#" onClick={this.logout}>Logout</a>
                     </li>
                 </div>
                 <SseNavigatorMenu history={this.props.history}/>
