@@ -28,7 +28,7 @@ class SseNavigatorApp extends React.Component
             selection: new Set(), 
             isAuthenticated: Meteor.userId() !== null
         };
-        this.logout = this.logout.bind(this);
+        
     }
 
     serverCall(props) 
@@ -99,11 +99,13 @@ class SseNavigatorApp extends React.Component
     }
 
     componentDidMount() {
+        console.log("NA did Mount")
         this.serverCall(this.props);
     }
 
     componentWillMount()
     {
+        console.log("NA will Mount")
         if (!this.state.isAuthenticated) 
         {
           this.props.history.push('/login');
@@ -112,6 +114,7 @@ class SseNavigatorApp extends React.Component
 
     componentDidUpdate(prevProps, prevState)
     {
+        console.log("NA did update")
         if (!this.state.isAuthenticated)
         {
           this.props.history.push('/login');

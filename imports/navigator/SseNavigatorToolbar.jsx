@@ -20,7 +20,6 @@ export default class SseNavigatorToolbar extends React.Component {
 
     logout = () =>
     {
-        // e.preventDefault();
         Meteor.logout( (err) => 
         {
             if (err) 
@@ -35,8 +34,9 @@ export default class SseNavigatorToolbar extends React.Component {
     }
 
     componentDidMount() {
+        console.log("NT did Mount0")
         this.updateBreadCrumb();
-        // this.logout = this.logout.bind(this)
+        console.log("NT did Mount1")
         
     }
     
