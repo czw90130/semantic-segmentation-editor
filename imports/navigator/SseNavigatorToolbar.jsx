@@ -16,13 +16,30 @@ export default class SseNavigatorToolbar extends React.Component {
     constructor() {
         super();
         this.state = {breadcrumb: []}
+        this.logout = this.logout.bind(this);
+    }
+
+    logout(e)
+    {
+        e.preventDefault();
+        Meteor.logout( (err) => 
+        {
+            if (err) 
+            {
+                console.log( err.reason );
+            } 
+            else 
+            {
+                this.props.history.push('/login');
+            }
+        });
     }
 
     componentDidMount() {
         this.updateBreadCrumb();
         
     }
-
+    
     updateBreadCrumb()
     {
         var basepath = "/browse/0/20/"
