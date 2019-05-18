@@ -2,7 +2,7 @@ import React from 'react';
  import { withHistory, Link } from 'react-router-dom';
  import { Accounts } from 'meteor/accounts-base';
 
-export default class SseSignupPage extends React.Component 
+class SseSignupPage extends React.Component 
 {
     constructor()
     {
@@ -27,7 +27,9 @@ export default class SseSignupPage extends React.Component
             this.setState({
             error: err.reason
             });
-        } else {
+        }
+        else
+        {
             this.props.history.push('/login');
         }
         });

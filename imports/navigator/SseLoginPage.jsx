@@ -1,6 +1,9 @@
 import React from 'react';
 import { withHistory, Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
+import SseTheme from "../common/SseTheme";
+import SseGlobals from "../common/SseGlobals";
+import SseMsg from "../common/SseMsg";
 
 
 export default class SseLoginPage extends React.Component {
@@ -18,12 +21,9 @@ export default class SseLoginPage extends React.Component {
     }
     handleSubmit(e)
     {
-        console.log("001")
         e.preventDefault();
-        console.log("002")
         let name = document.getElementById('login-name').value;
         let password = document.getElementById('login-password').value;
-        console.log("003")
         Meteor.loginWithPassword(name, password, (err) => {
           if(err)
           {
@@ -38,7 +38,6 @@ export default class SseLoginPage extends React.Component {
             console.log("0042")
           }
         });
-        console.log("004")
     }
     
     render()
@@ -89,3 +88,10 @@ export default class SseLoginPage extends React.Component {
         </div>
     );}
 }
+
+export default SseSignupPageContainer = createContainer(({params}) => {
+    const currentUser = Meteor.user();
+    return {
+      currentUser,
+    };
+  }, SseLoginPage);
