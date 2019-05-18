@@ -20,6 +20,7 @@ class SseLoginPage extends React.Component {
         e.preventDefault();
         let name = document.getElementById('login-name').value;
         let password = document.getElementById('login-password').value;
+        let isLoginSuccess = false
         Meteor.loginWithPassword(name, password, (err) => {
           if(err)
           {
@@ -30,9 +31,16 @@ class SseLoginPage extends React.Component {
           else 
           {
             console.log("0041")
-            this.props.history.push('/');
+            isLoginSuccess = true
             console.log("0042")
           }
+          if(isLoginSuccess)
+          {
+            console.log("0043")
+            this.props.history.push('/');
+            console.log("0044")
+          }
+          
         });
     }
     
