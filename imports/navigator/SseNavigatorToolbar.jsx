@@ -76,7 +76,7 @@ export default class SseNavigatorToolbar extends React.Component {
         return (
             <Toolbar className="sse-toolbar no-shrink hflex">
                 <SseBranding/>
-                <AccountsUIWrapper />
+                
                 <div className="hflex  grow">
                     {this.state.breadcrumb.map((bi, idx) => (
                         <div key={bi.browseUrl + idx} className="hflex flex-align-items-center">
@@ -88,7 +88,11 @@ export default class SseNavigatorToolbar extends React.Component {
                         </div>
                     ))}
                 </div>
-                
+                <div className="hflex">
+                    <li>
+                    <a href="#" onClick={this.logout}>Logout</a>
+                    </li>
+                </div>
                 <SseNavigatorMenu history={this.props.history}/>
             </Toolbar>
         );

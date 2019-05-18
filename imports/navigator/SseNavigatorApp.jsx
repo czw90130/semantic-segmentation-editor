@@ -23,7 +23,12 @@ class SseNavigatorApp extends React.Component
         super();
         SseMsg.register(this);
         this.increment = 20;
-        this.state = {pageLength: this.increment, selection: new Set()};
+        this.state = {
+            pageLength: this.increment, 
+            selection: new Set(), 
+            isAuthenticated: Meteor.userId() !== null
+        };
+        this.logout = this.logout.bind(this);
     }
 
     serverCall(props) 
@@ -95,6 +100,22 @@ class SseNavigatorApp extends React.Component
 
     componentDidMount() {
         this.serverCall(this.props);
+    }
+
+    componentWillMount()
+    {
+        if (!this.state.isAuthenticated) 
+        {
+          this.props.history.push('/login');
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState)
+    {
+        if (!this.state.isAuthenticated)
+        {
+          this.props.history.push('/login');
+        }
     }
 
     startEditing(image) 
