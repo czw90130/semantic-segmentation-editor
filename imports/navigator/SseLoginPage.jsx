@@ -11,13 +11,20 @@ export default class SseLoginPage extends React.Component {
         {
             error: ''
         };
-        // this.handleSubmit = this.handleSubmit.bind(this);
+        // 
+    }
+    componentDidMount()
+    {
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(e)
     {
+        console.log("001")
         e.preventDefault();
+        console.log("002")
         let name = document.getElementById('login-name').value;
         let password = document.getElementById('login-password').value;
+        console.log("003")
         Meteor.loginWithPassword(name, password, (err) => {
           if(err)
           {
@@ -30,7 +37,8 @@ export default class SseLoginPage extends React.Component {
             this.props.history.push('/');
           }
         });
-      }
+        console.log("004")
+    }
     
     render()
     {
