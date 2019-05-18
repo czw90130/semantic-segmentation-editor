@@ -1,12 +1,9 @@
 import React from 'react';
 import { withHistory, Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
-import SseTheme from "../common/SseTheme";
-import SseGlobals from "../common/SseGlobals";
-import SseMsg from "../common/SseMsg";
 
 
-export default class SseLoginPage extends React.Component {
+class SseLoginPage extends React.Component {
     constructor()
     {
         super();

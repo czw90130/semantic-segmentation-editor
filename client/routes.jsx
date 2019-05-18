@@ -6,7 +6,7 @@ import SseEditorApp from "../imports/editor/SseEditorApp";
 import SseNavigatorApp from "../imports/navigator/SseNavigatorApp";
 import SseAllAnnotated from "../imports/navigator/SseAllAnnotated";
 import SseSignupPage from "../imports/navigator/SseSignupPage";
-import SseLoginPage from "../imports/navigator/SseLoginPage";
+import SseLoginPageContainer from "../imports/navigator/SseLoginPage";
 
 
 const browserHistory = createBrowserHistory();
