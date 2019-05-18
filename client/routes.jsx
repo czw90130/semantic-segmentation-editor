@@ -5,7 +5,6 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import SseEditorApp from "../imports/editor/SseEditorApp";
 import SseNavigatorApp from "../imports/navigator/SseNavigatorApp";
 import SseAllAnnotated from "../imports/navigator/SseAllAnnotated";
-import SseNavigatorApp from "../imports/navigator/SseNavigatorApp";
 import SseSignupPage from "../imports/navigator/SseSignupPage";
 import SseLoginPage from "../imports/navigator/SseLoginPage";
 
@@ -34,8 +33,8 @@ export const renderRoutes = function()
             <Route path="/browse/:fromIndex/:pageLength/:path?" component={SseNavigatorApp}/>
             <Route path="/annotated" component={SseAllAnnotated}/>
             <Route path="/notautorized" render={()=>(<Redirect to="/browse/0/20/%2Fnotautorized" />)}/>
-            <Route path="/login" component={LoginPage}/>
-            <Route path="/signup" component={SignupPage}/>
+            <Route path="/login" component={SseSignupPage}/>
+            <Route path="/signup" component={SseLoginPage}/>
         </div>
     </Router>
 );
