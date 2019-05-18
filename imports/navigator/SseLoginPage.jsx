@@ -6,9 +6,9 @@ import {MuiThemeProvider} from '@material-ui/core/styles';
 import SseTheme from "../common/SseTheme";
 
 class SseLoginPage extends React.Component {
-    constructor()
+    constructor(props)
     {
-        super();
+        super(props);
         this.state = 
         {
             error: ''
