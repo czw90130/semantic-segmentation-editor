@@ -3,7 +3,7 @@ import { withHistory, Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
 
 
-export default class SseLoginPage extends React.Component {
+class SseLoginPage extends React.Component {
     constructor()
     {
         super();
@@ -30,13 +30,16 @@ export default class SseLoginPage extends React.Component {
             this.setState({
               error: err.reason
             });
+            console.log("0041")
           } 
           else 
           {
+            console.log("0041")
             this.props.history.push('/');
+            console.log("0042")
           }
         });
-        console.log("004")
+        console.log("005")
     }
     
     render()
