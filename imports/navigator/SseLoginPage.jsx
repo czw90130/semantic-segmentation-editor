@@ -13,9 +13,6 @@ class SseLoginPage extends React.Component {
         {
             error: ''
         };
-    }
-    componentDidMount()
-    {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(e)
