@@ -18,9 +18,9 @@ export default class SseNavigatorToolbar extends React.Component {
         this.state = {breadcrumb: []}
     }
 
-    logout(e)
+    logout = () =>
     {
-        e.preventDefault();
+        // e.preventDefault();
         Meteor.logout( (err) => 
         {
             if (err) 
@@ -36,7 +36,7 @@ export default class SseNavigatorToolbar extends React.Component {
 
     componentDidMount() {
         this.updateBreadCrumb();
-        this.logout = this.logout.bind(this)
+        // this.logout = this.logout.bind(this)
         
     }
     
