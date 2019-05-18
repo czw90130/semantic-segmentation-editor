@@ -89,7 +89,7 @@ export default class SseLoginPage extends React.Component {
     );}
 }
 
-export default SseSignupPageContainer = createContainer(({params}) => {
+export default SseLoginPageContainer = createContainer(({params}) => {
     const currentUser = Meteor.user();
     return {
       currentUser,
