@@ -9,7 +9,7 @@ class SseUserinfoPage extends React.Component
         super();
         this.state = {
             subscription: {
-                users: Meteor.subscribe('all')
+                users: Meteor.subscribe('sse-all-users')
             }
         }
     }
@@ -23,7 +23,7 @@ class SseUserinfoPage extends React.Component
         let users = this.props.users;
         console.log(users);
         return (<div>
-            <h1>GoArc User Manager</h1>
+            <h1>VSSE User Manager</h1>
 
             <div>
                 {users.map((user)=>{

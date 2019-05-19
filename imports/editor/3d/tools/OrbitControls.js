@@ -682,7 +682,7 @@ export default class OrbitControls {
 
             function handleTouchEnd(event) {
 
-                //console.log( 'handleTouchEnd' );
+                console.log( 'handleTouchEnd' );
 
             }
 
@@ -691,7 +691,7 @@ export default class OrbitControls {
             //
 
             function onMouseDown(event) {
-
+                console.log( 'ORB onMouseDown' );
                 if (scope.enabled === false) return;
 
                 event.preventDefault();
