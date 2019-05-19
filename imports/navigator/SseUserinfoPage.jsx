@@ -1,39 +1,47 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import {withTracker} from 'meteor/react-meteor-data';
-import { Accounts } from 'meteor/accounts-base';
-import {MuiThemeProvider} from '@material-ui/core/styles';
-import SseTheme from "../common/SseTheme";
+import React, {PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import { Meteor } from 'meteor/meteor';
+import { createContainer } from 'meteor/react-meteor-data';
 
 class SseUserinfoPage extends React.Component 
 {
+    constructor() {
+        super();
+        this.state = {
+            subscription: {
+                users: Meteor.subscribe('sse-all-users')
+            }
+        }
+    }
 
-    render()
-    {
-        console.log("this.props.alluserData")
-        console.log(this.props.alluserData)
-        return (<MuiThemeProvider theme={new SseTheme().theme}>
-        <div className="w100">
+    componentWillUnmount() {
+        this.state.subscription.users.stop();
+    }
+
+
+    render() {
+        let users = this.props.users;
+        console.log(users);
+        return (<div>
+            <h1>GoArc User Manager</h1>
+
             <div>
-                {this.props.alluserData}
+                {users.map((user)=>{
+                    if ('username' in user ) {
+                        username = user.username[0];
+                    } else {
+                        username = '?'
+                    }
+                    return <div key={user._id}>{user._id} - {username}</div>
+                })
+                }
             </div>
-        </div>
-        </MuiThemeProvider>
-        );
+        </div>)
     }
 }
 
-export default withTracker((props) => {
-    console.log("sse-all-users0")
-    
-    const allUserD =  Meteor.subscribe("sse-all-users");
-    const alluserData = Meteor.users.find({}).fetch();
-    
-    console.log(allUserD)
-    console.log(alluserData)
-    console.log("sse-all-users1")
-    Meteor.users.find().forEach(function(oneUser) {
-        console.log(oneUser);
-    })
-    return {alluserData}
-})(SseUserinfoPage);
+export default createContainer(() => {
+    return {
+      users: Meteor.users.find({ }).fetch(),
+    };
+  }, SseUserinfoPage);
