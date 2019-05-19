@@ -50,6 +50,11 @@ class SseNavigatorApp extends React.Component
             {
                 
                 let msg = "";
+                // console.log("images:")
+                // for (var i=0; i<res.images.length; i++)
+                // {
+                //     console.log(res.images[i])
+                // }
                 if (res.folders.length > 0) 
                 {
                     msg += res.folders.length + " folder";
@@ -78,7 +83,13 @@ class SseNavigatorApp extends React.Component
                 {
                     console.log(res.error);
                 }
-                this.props.history.push("/");
+                var protocol = window.location.protocol;
+                var host = window.location.host;
+                // var port = window.location.port;
+                console.log(protocol)
+                console.log(host)
+                // console.log(port)
+                this.props.history.push("/notautorized");
             }
         });
     }
@@ -88,11 +99,13 @@ class SseNavigatorApp extends React.Component
     }
 
     componentDidMount() {
+        console.log("NA did Mount")
         this.serverCall(this.props);
     }
 
     componentWillMount()
     {
+        console.log("NA will Mount")
         if (!this.state.isAuthenticated) 
         {
           this.props.history.push('/login');
@@ -101,6 +114,7 @@ class SseNavigatorApp extends React.Component
 
     componentDidUpdate(prevProps, prevState)
     {
+        console.log("NA did update")
         if (!this.state.isAuthenticated)
         {
           this.props.history.push('/login');
