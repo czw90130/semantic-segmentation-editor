@@ -10,6 +10,7 @@ class SseUserinfoPage extends React.Component
 
     render()
     {
+        console.log("this.props.alluserData")
         console.log(this.props.alluserData)
         return (<MuiThemeProvider theme={new SseTheme().theme}>
         <div className="w100">
@@ -23,7 +24,10 @@ class SseUserinfoPage extends React.Component
 }
 
 export default withTracker((props) => {
+    console.log("sse-all-users")
+    
     Meteor.subscribe("sse-all-users");
     const alluserData = Meteor.users.find({}).fetch();
+    console.log(alluserData)
     return {alluserData}
 })(SseUserinfoPage);
