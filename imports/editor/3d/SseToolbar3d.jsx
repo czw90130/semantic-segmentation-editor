@@ -50,6 +50,7 @@ export default class SseToolbar3d extends SseToolbar {
     }
 
     render() {
+        let userDataAvailable = (Meteor.user() !== undefined && 'root' == Meteor.user().username);
         return (
             <div className="hflex flex-justify-content-space-around sse-toolbar toolbar-3d no-shrink">
                 <SseBranding/>
@@ -89,14 +90,16 @@ export default class SseToolbar3d extends SseToolbar {
                         {this.renderCommand("changeCameraFovCommand")}
                     </div>
                 </div> */}
-                <div className="vflex">
-                    {/* <div className="tool-title">PCD Output</div> */}
-                    <div className="tool-title">PLY Output</div>
-                    <div className="hflex">
-                        {this.renderCommand("downloadTextCommand")}
-                        {this.renderCommand("downloadFileCommand")}
+                { userDataAvailable ?
+                    <div className="vflex">
+                        <div className="tool-title">PLY Output</div>
+                        <div className="hflex">
+                            {this.renderCommand("downloadTextCommand")}
+                            {this.renderCommand("downloadFileCommand")}
+                        </div>
                     </div>
-                </div>
+                    : ''
+                }
             </div>
         )
     }
