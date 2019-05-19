@@ -4,6 +4,7 @@ import {basename, extname, join} from "path";
 import url from "url";
 import ColorScheme from "color-scheme";
 import config from "./config";
+import "./users.js"
 
 let {classes} = config;
 
