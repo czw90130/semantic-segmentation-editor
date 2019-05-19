@@ -108,7 +108,7 @@ export default class SseNavigatorToolbar extends React.Component {
                 </div>
                 <div className="hflex">
                     <li>
-                        currentUser.username
+                        {currentUser.username + "  "}
                     </li>
                     <li>
                         <a href="#" onClick={this.logout}> Logout</a>

@@ -77,7 +77,7 @@ class SseLoginPage extends React.Component {
                 </div>
                 <div className="form-group text-center">
                     <p className="text-center">
-                    <h2>Don't have an account? Register <Link to="/signup">here</Link></h2>
+                    <font  color="#999999">Don't have an account? Register </font><Link to="/signup" color="#0000FF">here</Link>
                     </p>
                 </div>
                 </form>
