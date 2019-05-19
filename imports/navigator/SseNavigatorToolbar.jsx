@@ -43,7 +43,7 @@ export default class SseNavigatorToolbar extends React.Component {
         var basepath = "/browse/0/20/"
         if(Meteor.userId())
         {
-            if('root' != currentUser.username)
+            if('root' != Meteor.user().username)
             {
                 basepath += '%2F' + Meteor.userId()
             }   
@@ -61,7 +61,7 @@ export default class SseNavigatorToolbar extends React.Component {
             let res = [{name: "Home", browseUrl: basepath}];
             let data;
             let shouitem = true;
-            if(itm == Meteor.userId() && 'root' != currentUser.username)
+            if(itm == Meteor.userId() && 'root' != Meteor.user().username)
             {
                 shouitem = false;
             }
@@ -115,6 +115,9 @@ export default class SseNavigatorToolbar extends React.Component {
                     ))}
                 </div>
                 <div className="hflex">
+                    <li>
+                        {currentUser.username + "  "}
+                    </li>
                     <li>
                         <a href="#" onClick={this.logout}> Logout</a>
                     </li>

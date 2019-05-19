@@ -4,7 +4,7 @@ import {withTracker} from 'meteor/react-meteor-data';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import SseTheme from "../common/SseTheme";
 
-class SseLoginPage extends React.Component {
+export default class SseLoginPage extends React.Component {
     constructor(props)
     {
         super(props);
@@ -89,10 +89,3 @@ class SseLoginPage extends React.Component {
         </MuiThemeProvider>
     );}
 }
-
-export default withTracker((props) => {
-    const currentUser = Meteor.user();
-    return {
-      currentUser,
-    };
-})(SseLoginPage);
