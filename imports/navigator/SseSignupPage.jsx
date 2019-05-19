@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {withTracker} from 'meteor/react-meteor-data';
 import { Accounts } from 'meteor/accounts-base';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import SseTheme from "../common/SseTheme";
