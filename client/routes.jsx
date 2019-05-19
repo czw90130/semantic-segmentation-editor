@@ -7,6 +7,7 @@ import SseNavigatorApp from "../imports/navigator/SseNavigatorApp";
 import SseAllAnnotated from "../imports/navigator/SseAllAnnotated";
 import SseSignupPage from "../imports/navigator/SseSignupPage";
 import SseLoginPage from "../imports/navigator/SseLoginPage";
+import SseUserinfoPage from "../imports/navigator/SseUserinfoPage";
 
 
 const browserHistory = createBrowserHistory();
@@ -25,6 +26,7 @@ export const renderRoutes = function()
             <Route path="/notautorized" render={()=>(<Redirect to="/browse/0/20/%2Fnotautorized" />)}/>
             <Route exact path="/login" component={SseLoginPage}/>
             <Route excct path="/signup" component={SseSignupPage}/>
+            <Route excct path="/userinfo" component={SseUserinfoPage}/>
         </div>
     </Router>
 );
