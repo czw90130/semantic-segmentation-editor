@@ -27,12 +27,7 @@ class SseUserinfoPage extends React.Component
 
             <div>
                 {users.map((user)=>{
-                    if ('emails' in user ) {
-                        email = user.emails[0].address;
-                    } else {
-                        email = '?'
-                    }
-                    return <div key={user._id}>{user._id} - {email}</div>
+                    return <div key={user._id}>{user._id} - {user.username}</div>
                 })
                 }
             </div>
