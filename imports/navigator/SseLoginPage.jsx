@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import {withTracker} from 'meteor/react-meteor-data';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import SseTheme from "../common/SseTheme";
 
-class SseLoginPage extends React.Component {
+export default class SseLoginPage extends React.Component {
     constructor(props)
     {
         super(props);
@@ -77,7 +76,7 @@ class SseLoginPage extends React.Component {
                 </div>
                 <div className="form-group text-center">
                     <p className="text-center">
-                    <font  color="#999999">Don't have an account? Register </font><Link to="/signup" color="#0000FF">here</Link>
+                        <font  color="#999999">Don't have an account? Register </font><Link to="/signup" color="#0000FF">here</Link>
                     </p>
                 </div>
                 </form>
@@ -89,10 +88,3 @@ class SseLoginPage extends React.Component {
         </MuiThemeProvider>
     );}
 }
-
-export default withTracker((props) => {
-    const currentUser = Meteor.user();
-    return {
-      currentUser,
-    };
-})(SseLoginPage);
