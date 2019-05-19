@@ -1865,6 +1865,7 @@ export default class SseEditor3d extends React.Component {
     }
 
     mouseDown(ev) {
+        console.log( 'EDIT onMouseDown' );
         if (ev.button == 1 || this.ctrlDown) {
             this.changeTarget(ev);
         } else {

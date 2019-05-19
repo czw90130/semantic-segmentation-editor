@@ -556,7 +556,7 @@ export default class OrbitControls {
 
             function handleKeyDown(event) {
 
-                //console.log( 'handleKeyDown' );
+                console.log( 'handleKeyDown' );
 
                 switch (event.keyCode) {
 
