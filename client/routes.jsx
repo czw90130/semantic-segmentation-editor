@@ -16,10 +16,10 @@ export const renderRoutes = function()
     return(
     <Router history={browserHistory}>
         <div>
-            <Route exact path="/" render={()=>(<Redirect to={"/browse/0/20/%2F"+(()=>(Meteor.userId()?Meteor.userId():"notautorized"))} />)}/>
+            <Route exact path="/" render={()=>(<Redirect to={"/browse/0/20/%2F"+(Meteor.userId()?Meteor.userId():"notautorized")} />)}/>
             <Route path="/edit/:path" component={SseEditorApp}/>
-            <Route exact path="/edit/" render={()=>(<Redirect to={"/browse/0/20/%2F"+(()=>(Meteor.userId()?Meteor.userId():"notautorized"))}/>)}/>
-            <Route exact path="/edit" render={()=>(<Redirect to={"/browse/0/20/%2F"+(()=>(Meteor.userId()?Meteor.userId():"notautorized"))}/>)}/>
+            <Route exact path="/edit/" render={()=>(<Redirect to={"/browse/0/20/%2F"+(Meteor.userId()?Meteor.userId():"notautorized")}/>)}/>
+            <Route exact path="/edit" render={()=>(<Redirect to={"/browse/0/20/%2F"+(Meteor.userId()?Meteor.userId():"notautorized")}/>)}/>
             <Route path="/browse/:fromIndex/:pageLength/:path?" component={SseNavigatorApp}/>
             <Route path="/annotated" component={SseAllAnnotated}/>
             <Route path="/notautorized" render={()=>(<Redirect to="/browse/0/20/%2Fnotautorized" />)}/>

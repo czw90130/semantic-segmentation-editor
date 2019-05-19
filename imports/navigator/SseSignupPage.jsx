@@ -74,7 +74,7 @@ class SseSignupPage extends React.Component
                     </div>
                     <div className="form-group">
                     <p className="text-center">
-                        Already have an account? Login <Link to="/login">here</Link>
+                        <h2>Already have an account? Login <Link to="/login">here</Link></h2>
                     </p>
                     </div>
                 </form>
