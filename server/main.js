@@ -4,7 +4,16 @@ import {basename, extname, join} from "path";
 import url from "url";
 import ColorScheme from "color-scheme";
 import config from "./config";
-import "./users.js"
+// import "./users.js"
+
+if (Meteor.isServer) {
+    // This code only runs on the server
+    // Only publish tasks that are public or belong to the current user  
+    Meteor.publish('sse-all-users', function() {
+      // return Meteor.users.find({}, {fields:{username:1,_id:1}})
+      return Meteor.users.find({}, {fields: {"emails.address": 1}});  
+    })
+  }
 
 let {classes} = config;
 
