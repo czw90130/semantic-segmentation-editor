@@ -100,10 +100,3 @@ export default withTracker((props) => {
       currentUser,
     };
 })(SseLoginPage);
-
-// export default SseLoginPageContainer = createContainer(({params}) => {
-//     const currentUser = Meteor.user();
-//     return {
-//       currentUser,
-//     };
-//   }, SseLoginPage);

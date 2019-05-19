@@ -1,6 +1,8 @@
 import React from 'react';
- import { withHistory, Link } from 'react-router-dom';
- import { Accounts } from 'meteor/accounts-base';
+import { Link } from 'react-router-dom';
+import { Accounts } from 'meteor/accounts-base';
+import {MuiThemeProvider} from '@material-ui/core/styles';
+import SseTheme from "../common/SseTheme";
 
 class SseSignupPage extends React.Component 
 {
@@ -10,9 +12,6 @@ class SseSignupPage extends React.Component
         this.state = {
         error: ''
         };
-    }
-    componentDidMount()
-    {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -22,6 +21,7 @@ class SseSignupPage extends React.Component
         let name = document.getElementById("signup-name").value;
         let password = document.getElementById("signup-password").value;
         this.setState({error: "test"});
+        let isSignupSuccess = false
         Accounts.createUser({username: name, password: password}, (err) => {
         if(err){
             this.setState({
@@ -29,6 +29,10 @@ class SseSignupPage extends React.Component
             });
         }
         else
+        {
+            isSignupSuccess = true
+        }
+        if(isSignupSuccess)
         {
             this.props.history.push('/login');
         }
@@ -38,7 +42,7 @@ class SseSignupPage extends React.Component
     render()
     {
         const error = this.state.error;
-        return (
+        return (<MuiThemeProvider theme={new SseTheme().theme}>
         <div className="modal show">
             <div className="modal-dialog">
             <div className="modal-content">
@@ -77,6 +81,14 @@ class SseSignupPage extends React.Component
             </div>
             </div>
         </div>
+        </MuiThemeProvider>
         );
     }
 }
+
+export default withTracker((props) => {
+    const currentUser = Meteor.user();
+    return {
+      currentUser,
+    };
+})(SseSignupPage);
