@@ -10,16 +10,8 @@ import SseLoginPage from "../imports/navigator/SseLoginPage";
 
 
 const browserHistory = createBrowserHistory();
-var basepath = "/browse/0/20/";
-if(Meteor.userId())
-{
-    basepath += '%2F' + Meteor.userId()
-}
-else
-{
-    basepath += '%2Fnotautorized'
-}
-
+basepath = () => 
+    (Meteor.userId() ? "/browse/0/20/%2F" + Meteor.userId() : "/browse/0/20/%2Fnotautorized");
 
 export const renderRoutes = function()
 {

@@ -1,6 +1,5 @@
 import React from 'react';
-import { withHistory, Link } from 'react-router-dom'
-import { createContainer } from 'meteor/react-meteor-data'
+import { Link } from 'react-router-dom'
 import {withTracker} from 'meteor/react-meteor-data';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import SseTheme from "../common/SseTheme";
@@ -30,15 +29,11 @@ class SseLoginPage extends React.Component {
           } 
           else 
           {
-            console.log("0041")
             isLoginSuccess = true
-            console.log("0042")
           }
           if(isLoginSuccess)
           {
-            console.log("0043")
             this.props.history.push('/');
-            console.log("0044")
           }
           
         });
@@ -48,6 +43,7 @@ class SseLoginPage extends React.Component {
     {
     const error = this.state.error;
     return (<MuiThemeProvider theme={new SseTheme().theme}>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"></link>
         <div className="modal show">
         <div className="modal-dialog">
             <div className="modal-content">

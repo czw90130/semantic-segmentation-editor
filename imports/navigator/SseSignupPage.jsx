@@ -44,6 +44,7 @@ class SseSignupPage extends React.Component
     {
         const error = this.state.error;
         return (<MuiThemeProvider theme={new SseTheme().theme}>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"></link>
         <div className="modal show">
             <div className="modal-dialog">
             <div className="modal-content">
