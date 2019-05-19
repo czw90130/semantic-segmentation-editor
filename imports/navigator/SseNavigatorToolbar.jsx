@@ -60,9 +60,13 @@ export default class SseNavigatorToolbar extends React.Component {
 
             let res = [{name: "Home", browseUrl: basepath}];
             let data;
-
+            let isRootUser = false;
+            if(Meteor.userId() && 'root' == Meteor.user().username)
+            {
+                isRootUser = true
+            }
             bd.forEach(itm => {
-                    if (itm != "" && (itm != Meteor.userId() || 'root' == Meteor.user().username)) 
+                    if (itm != "" && (itm != Meteor.userId() || isRootUser)) 
                     {
                         data = {name: itm, browseUrl: ""};
                         for (let i = 0; i < bd.length; i++) 

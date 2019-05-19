@@ -24,10 +24,16 @@ class SseUserinfoPage extends React.Component
 }
 
 export default withTracker((props) => {
-    console.log("sse-all-users")
+    console.log("sse-all-users0")
     
-    Meteor.subscribe("sse-all-users");
+    const allUserD =  Meteor.subscribe("sse-all-users");
     const alluserData = Meteor.users.find({}).fetch();
+    
+    console.log(allUserD)
     console.log(alluserData)
+    console.log("sse-all-users1")
+    Meteor.users.find().forEach(function(oneUser) {
+        console.log(oneUser);
+    })
     return {alluserData}
 })(SseUserinfoPage);
