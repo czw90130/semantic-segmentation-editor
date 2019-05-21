@@ -110,6 +110,10 @@ class SseNavigatorApp extends React.Component
         {
           this.props.history.push('/login');
         }
+        else if (!document.URL.includes(Meteor.userId()))
+        {
+            this.props.history.push("/notautorized");
+        }
     }
 
     componentDidUpdate(prevProps, prevState)
@@ -119,6 +123,11 @@ class SseNavigatorApp extends React.Component
         {
           this.props.history.push('/login');
         }
+        else if (!document.URL.includes(Meteor.userId()))
+        {
+            this.props.history.push("/notautorized");
+        }
+    }
     }
 
     startEditing(image) 
