@@ -128,7 +128,6 @@ class SseNavigatorApp extends React.Component
             this.props.history.push("/notautorized");
         }
     }
-    }
 
     startEditing(image) 
     {
