@@ -110,7 +110,7 @@ class SseNavigatorApp extends React.Component
         {
           this.props.history.push('/login');
         }
-        else if (!document.URL.includes(Meteor.userId()))
+        else if (!document.URL.includes(Meteor.userId()) && !document.URL.includes("notautorized"))
         {
             this.props.history.push("/notautorized");
         }
@@ -123,7 +123,7 @@ class SseNavigatorApp extends React.Component
         {
           this.props.history.push('/login');
         }
-        else if (!document.URL.includes(Meteor.userId()))
+        else if (!document.URL.includes(Meteor.userId()) && !document.URL.includes("notautorized"))
         {
             this.props.history.push("/notautorized");
         }
