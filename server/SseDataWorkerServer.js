@@ -163,15 +163,22 @@ LZW = {
 
         w = String.fromCharCode(compressed[0]);
         result = w;
-        for (i = 1; i < compressed.length; i += 1) {
+        for (i = 1; i < compressed.length; i += 1)
+        {
 
             k = compressed[i];
-            if (dictionary[k]) {
+            if (dictionary[k])
+            {
                 entry = dictionary[k];
-            } else {
-                if (k === dictSize) {
+            }
+            else
+            {
+                if (k === dictSize)
+                {
                     entry = w + w.charAt(0);
-                } else {
+                }
+                else
+                {
                     return null;
                 }
             }

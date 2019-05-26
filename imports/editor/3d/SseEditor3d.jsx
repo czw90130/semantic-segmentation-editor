@@ -529,26 +529,6 @@ export default class SseEditor3d extends React.Component {
         SseMsg.unregister(this);
     }
 
-    // changeCameraFov()
-    // {
-    //     if (15 == this.camera.fov)
-    //     {   
-    //         this.camera.fov = 1;
-    //         // this.camera.position.x *= 5
-    //         // this.camera.position.y *= 5
-    //         // this.camera.position.z *= 5
-    //     }
-    //     else
-    //     {
-    //         this.camera.fov = 15;
-    //         // this.camera.position.x /= 5
-    //         // this.camera.position.y /= 5
-    //         // this.camera.position.z /= 5
-    //     }
-        
-    //     this.camera.updateProjectionMatrix();
-    //     this.renderer.render(this.scene, this.camera);
-    // }
 
     downloadFile() {
         // window.open("/api/pcdfile" + this.props.imageUrl, "_blank");
@@ -620,18 +600,7 @@ export default class SseEditor3d extends React.Component {
 
         //create image
         this.bitmap = document.createElement('canvas');
-        // if(Meteor.user().username.length<8)
-        // {
-        //     this.bitmap.width = 64
-        // }
-        // else if(Meteor.user().username.length<12)
-        // {
-        //     this.bitmap.width = 128
-        // }
-        // else
-        // {
-        //     this.bitmap.width = 256
-        // }
+   
         this.bitmap.width = 128
         this.bitmap.height = 64;
         this.bitmap.style.width = this.bitmap.width + 'px';
