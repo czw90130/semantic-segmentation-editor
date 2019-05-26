@@ -47,7 +47,7 @@ export default class SsePLYLoader {
                     };
 
                 
-                    if(-1 == PLYheader.str.search(/tags/))
+                    if(-1 == PLYheader.str.search(/tags/) && -1 == PLYheader.str.search(/segs/))
                     {
                         PLYheader.offset = {'x':0, 'y':1, 'z':2, 'label':-1, 'nx':3, "ny":4, "nz":5};
                     }

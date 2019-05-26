@@ -28,3 +28,4 @@ accounts-password
 accounts-base
 service-configuration
 deanius:promise
+pahans:reactive-modal
